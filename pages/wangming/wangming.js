@@ -6,9 +6,10 @@ Page({
       console.log(res.target)
     }
     return {
-      title: '大家喜欢的精品网名小程序,赶紧来看看',
+      title: this.data.contentArray[res.target.id].title,
       // path:'/',
-      imageUrl:'../../indexPic.png',
+      // desc: this.data.contentArray[res.target.id].title,
+      imageUrl: 'http://jianjiexcx.92kaifa.com/e/api/creat/get.php?getJson=showPic&font=610&text=' + this.data.contentArray[res.target.id].title +'&fontSize=28&width=250&height=60&fontColor=ff5a00',
       success: (res) => {
         wx.showToast({
           content: '分享成功'
@@ -25,14 +26,14 @@ Page({
     winHeight: "",//窗口高度
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
-    expertListi:[],
+    expertListi: [],
     expertList: [],
-    expertListId:[],
-    _windowWidth : wx.getSystemInfoSync().windowWidth,
-    contentArray:[]
+    expertListId: [],
+    _windowWidth: wx.getSystemInfoSync().windowWidth,
+    contentArray: []
   },
   copyTBL: function (e) {
-    console.log('wwweeee',e);
+    console.log('wwweeee', e);
     var self = this;
     wx.setClipboardData({
       data: e.currentTarget.dataset.text.trim(),
@@ -48,7 +49,7 @@ Page({
     })
   },
 
-  getListData:function(classid,more){
+  getListData: function (classid, more) {
     let that = this;
     let _arr = this.data.contentArray;
     wx.request({
@@ -57,18 +58,18 @@ Page({
       dataType: 'json',
       success: (json) => {
         console.log('json.data.result', json.data.result);
-        if (more){
+        if (more) {
           // _arr.slice(_arr,json.data.result);
           _arr = _arr.concat(json.data.result);
           that.setData({
             contentArray: _arr
           });
-        }else{
+        } else {
           that.setData({
             contentArray: json.data.result
           });
         };
-        console.log('contentArray--==',this.data.contentArray);
+        console.log('contentArray--==', this.data.contentArray);
       }
     })
   },
@@ -83,7 +84,7 @@ Page({
   },
   // 点击标题切换当前页时改变样式
   swichNav: function (e) {
-    console.log('eee--click',e);
+    console.log('eee--click', e);
     var cur = e.target.dataset.current;
     if (this.data.currentTaB == cur) { return false; }
     else {
@@ -101,7 +102,7 @@ Page({
   },
   onLoad: function () {
     wx.setNavigationBarTitle({
-      title: '简洁设计网'
+      title: '网名'
     })
     let _classid = [];
     let _expertListi = [];
@@ -111,13 +112,13 @@ Page({
       dataType: 'json',
       success: (json) => {
         for (var i = 0; i < json.data.result.length; i++) {
-           _expertListi.push(i)
+          _expertListi.push(i)
           _classid.push(json.data.result[i].classid);
         };
         this.setData({
           expertList: json.data.result,
           expertListi: _expertListi,
-          expertListId:_classid
+          expertListId: _classid
         });
       }
     });
@@ -136,8 +137,8 @@ Page({
       }
     });
   },
-  scrolltolowerLoadData: function(e){
+  scrolltolowerLoadData: function (e) {
     console.log('scrolltolowerLoadData', e);
-    this.getListData(this.data.expertListId[this.data.currentTab],true);
+    this.getListData(this.data.expertListId[this.data.currentTab], true);
   }
 })

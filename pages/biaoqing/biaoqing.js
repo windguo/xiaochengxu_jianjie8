@@ -6,9 +6,8 @@ Page({
       console.log(res.target)
     }
     return {
-      title: '大家喜欢的精品网名小程序,赶紧来看看',
-      // path:'/',
-      imageUrl:'../../indexPic.png',
+      title: this.data.contentArray[res.target.id].title,
+      imageUrl: this.data.contentArray[res.target.id].titlepic,
       success: (res) => {
         wx.showToast({
           content: '分享成功'
@@ -22,53 +21,54 @@ Page({
     }
   },
   data: {
+    index:null,
     winHeight: "",//窗口高度
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
-    expertListi:[],
+    expertListi: [],
     expertList: [],
-    expertListId:[],
-    _windowWidth : wx.getSystemInfoSync().windowWidth,
-    contentArray:[]
-  },
-  copyTBL: function (e) {
-    console.log('wwweeee',e);
-    var self = this;
-    wx.setClipboardData({
-      data: e.currentTarget.dataset.text.trim(),
-      success: function (res) {
-        wx.getClipboardData({
-          success: function (res) {
-            wx.showToast({
-              title: '复制成功',
-            })
-          }
-        })
-      }
-    })
+    expertListId: [],
+    _windowWidth: wx.getSystemInfoSync().windowWidth,
+    contentArray: []
   },
 
-  getListData:function(classid,more){
+  getListData: function (classid, more) {
     let that = this;
     let _arr = this.data.contentArray;
     wx.request({
-      url: 'https://jianjiexcx.92kaifa.com/wangmingApi/?getJson=column&classid=' + classid,
+      url: 'https://jianjiexcx.92kaifa.com/biaoqingApi/?getJson=column&classid=' + classid,
       method: 'GET',
       dataType: 'json',
       success: (json) => {
-        console.log('json.data.result', json.data.result);
-        if (more){
-          // _arr.slice(_arr,json.data.result);
-          _arr = _arr.concat(json.data.result);
+        console.log('json.data.result---', json.data.result);
+        if (more) {
+          let _newArr = [];
+          for (let index = 0; index < json.data.result.length; index++) {
+            _newArr.push({
+              title: json.data.result[index].title,
+              titlepic: 'https://jianjiexcx.92kaifa.com/allStaticFiles' + json.data.result[index].titlepic.substring(30)
+            });
+          };
+          _arr = _arr.concat(_newArr);
           that.setData({
             contentArray: _arr
           });
-        }else{
+        } else {
+
+          let _newArr = [];
+          for (let index = 0; index < json.data.result.length; index++) {
+            _newArr.push({
+              title: json.data.result[index].title,
+              titlepic: 'https://jianjiexcx.92kaifa.com/allStaticFiles' + json.data.result[index].titlepic.substring(30)
+            });
+          };
+          console.log('===',_newArr);
           that.setData({
-            contentArray: json.data.result
+            contentArray: _newArr
           });
         };
-        console.log('contentArray--==',this.data.contentArray);
+        console.log('contentArray--==', this.data.contentArray);
+        wx.hideLoading();
       }
     })
   },
@@ -83,7 +83,7 @@ Page({
   },
   // 点击标题切换当前页时改变样式
   swichNav: function (e) {
-    console.log('eee--click',e);
+    console.log('eee--click', e);
     var cur = e.target.dataset.current;
     if (this.data.currentTaB == cur) { return false; }
     else {
@@ -95,29 +95,31 @@ Page({
   },
   //判断当前滚动超过一屏时，设置tab标题滚动条。
   checkCor: function () {
-    this.setData({
-      scrollLeft: this.data._windowWidth / 5 * this.data.currentTab - 100
-    });
+    wx.showLoading({}),
+      this.setData({
+        scrollLeft: this.data._windowWidth / 5 * this.data.currentTab - 100
+      });
   },
   onLoad: function () {
+    wx.showLoading({})
     wx.setNavigationBarTitle({
-      title: '简洁设计网'
+      title: '表情'
     })
     let _classid = [];
     let _expertListi = [];
     wx.request({
-      url: 'https://jianjiexcx.92kaifa.com/wangmingApi/?getJson=class',
+      url: 'https://jianjiexcx.92kaifa.com/biaoqingApi/?getJson=class',
       method: 'GET',
       dataType: 'json',
       success: (json) => {
         for (var i = 0; i < json.data.result.length; i++) {
-           _expertListi.push(i)
+          _expertListi.push(i)
           _classid.push(json.data.result[i].classid);
         };
         this.setData({
           expertList: json.data.result,
           expertListi: _expertListi,
-          expertListId:_classid
+          expertListId: _classid
         });
       }
     });
@@ -136,8 +138,8 @@ Page({
       }
     });
   },
-  scrolltolowerLoadData: function(e){
+  scrolltolowerLoadData: function (e) {
     console.log('scrolltolowerLoadData', e);
-    this.getListData(this.data.expertListId[this.data.currentTab],true);
+    this.getListData(this.data.expertListId[this.data.currentTab], true);
   }
 })

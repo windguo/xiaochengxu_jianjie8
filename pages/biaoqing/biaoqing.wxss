@@ -12,13 +12,12 @@
 .askBtn{ width: 120rpx;height: 60rpx;line-height: 60rpx;text-align: center;font-size: 14px; border-radius: 60rpx;border: 1px solid #4675F9; color:#4675F9;}
 .tab-content{margin-top: 100rpx;}
 .scoll-h{height: 100%;}
-.listViews{padding:40rpx;margin:40rpx;border-radius: 40rpx;background: #fff;font-weight: 300;border:1rpx solid #eee;}
-
-
-image{
-transition: all .3s ease;
-opacity: 0;
+.layout_vertical{
+  flex-flow: row wrap;
+  display: flex;
+  flex-direction: row;
+  margin:20rpx;
 }
-.active{
-opacity: 1;
-}
+.shareButton{margin-top:20rpx;width:100%;}
+.listViews{flex:1;margin:10rpx 10rpx;background:#fff;padding:10rpx;border-radius: 10rpx;}
+/* .listViews{padding:40rpx;margin:40rpx;border-radius: 40rpx;background: #fff;font-weight: 300;border:1rpx solid #eee;} */
