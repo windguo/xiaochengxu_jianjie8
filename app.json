@@ -1,0 +1,12 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ff4f41",
+    "navigationBarTitleText": "精选网名",
+    "navigationBarTextStyle": "white"
+  }
+}
