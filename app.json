@@ -7,6 +7,7 @@
     "pages/logs/logs"
   ],
   "tabBar": {
+      "selectedColor": "#ff4f41",
     "list": [
       {
         "pagePath": "pages/biaoqing/biaoqing",

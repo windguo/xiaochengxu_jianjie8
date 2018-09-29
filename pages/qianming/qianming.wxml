@@ -12,6 +12,7 @@
           <view wx:for="{{contentArray}}" class="listViews" wx:for-index="i" wx:for-item="item">
             <view bindtap="copyTBL" data-text="{{item.title}}" style="margin-bottom:20rpx;">{{item.title}}</view>
             <view bindtap="copyTBL" data-text="{{item.ftitle}}">{{item.ftitle}}</view>
+            <button open-type="share" size='mini' class="shareButton" id="{{i}}" type="default">分享给好友</button>
           </view>
         </scroll-view>
       </swiper-item>

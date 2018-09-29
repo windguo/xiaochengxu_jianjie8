@@ -3,22 +3,35 @@ Page({
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
       // 来自页面内转发按钮
-      console.log(res.target)
-    }
-    return {
-      title: this.data.contentArray[res.target.id].title,
-      // path:'/',
-      // desc: this.data.contentArray[res.target.id].title,
-      imageUrl: 'http://jianjiexcx.92kaifa.com/e/api/creat/get.php?getJson=showPic&font=610&text=' + encodeURIComponent(this.data.contentArray[res.target.id].title.trim().substring(0,5)) + '...&fontSize=30&width=250&height=200&fontColor=ff5a00',
-      success: (res) => {
-        wx.showToast({
-          content: '分享成功'
-        });
-      },
-      fail: (res) => {
-        wx.showToast({
-          content: '分享失败,原因是' + res
-        });
+      console.log('res.target===', res.target);
+      return {
+        title: this.data.contentArray[res.target.id].title,
+        imageUrl: 'http://jianjiexcx.92kaifa.com/e/api/creat/get.php?getJson=showPic&font=610&text=' + encodeURIComponent(this.data.contentArray[res.target.id].title.trim().substring(0, 5)) + '...&fontSize=30&width=250&height=200&fontColor=ff5a00',
+        success: (res) => {
+          wx.showToast({
+            content: '分享成功'
+          });
+        },
+        fail: (res) => {
+          wx.showToast({
+            content: '分享失败,原因是' + res
+          });
+        }
+      }
+    } else {
+      return {
+        title: '简洁设计网提供表情、签名、网名等个性素材。',
+        imageUrl: '../../indexPic.png',
+        success: (res) => {
+          wx.showToast({
+            content: '分享成功'
+          });
+        },
+        fail: (res) => {
+          wx.showToast({
+            content: '分享失败,原因是' + res
+          });
+        }
       }
     }
   },
