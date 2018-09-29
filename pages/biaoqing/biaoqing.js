@@ -103,7 +103,7 @@ Page({
   onLoad: function () {
     wx.showLoading({})
     wx.setNavigationBarTitle({
-      title: '表情'
+      title: '表情大全'
     })
     let _classid = [];
     let _expertListi = [];

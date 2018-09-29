@@ -1,6 +1,5 @@
 {
   "pages":[
-    "pages/index/index",
     "pages/biaoqing/biaoqing",
     "pages/wangming/wangming",
     "pages/qianming/qianming",
@@ -10,24 +9,16 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "text": "首页"
-      },
-      {
         "pagePath": "pages/biaoqing/biaoqing",
-        "text": "表情"
+        "text": "表情大全"
       },
       {
         "pagePath": "pages/wangming/wangming",
-        "text": "网名"
+        "text": "网名大全"
       },
       {
         "pagePath": "pages/qianming/qianming",
-        "text": "签名"
-      },
-      {
-        "pagePath": "pages/user/user",
-        "text": "我的"
+        "text": "签名大全"
       }
     ]
   },

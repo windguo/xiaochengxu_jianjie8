@@ -8,8 +8,8 @@ Page({
     return {
       title: this.data.contentArray[res.target.id].title,
       // path:'/',
-      desc: this.data.contentArray[res.target.id].title,
-      imageUrl: 'http://jianjiexcx.92kaifa.com/e/api/creat/get.php?getJson=showPic&font=610&text=' + this.data.contentArray[res.target.id].title +'&fontSize=28&width=250&height=60&fontColor=ff5a00',
+      // desc: this.data.contentArray[res.target.id].title,
+      imageUrl: 'http://jianjiexcx.92kaifa.com/e/api/creat/get.php?getJson=showPic&font=610&text=' + encodeURIComponent(this.data.contentArray[res.target.id].title.trim().substring(0,5)) +'...&fontSize=30&width=250&height=200&fontColor=ff5a00',
       success: (res) => {
         wx.showToast({
           content: '分享成功'
@@ -102,7 +102,7 @@ Page({
   },
   onLoad: function () {
     wx.setNavigationBarTitle({
-      title: '网名'
+      title: '签名大全'
     })
     let _classid = [];
     let _expertListi = [];
