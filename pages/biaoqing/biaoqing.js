@@ -6,7 +6,7 @@ Page({
       console.log('res.target===', res.target);
       return {
         title: this.data.contentArray[res.target.id].title,
-        imageUrl: 'http://jianjiexcx.92kaifa.com/e/api/creat/get.php?getJson=showPic&font=610&text=' + encodeURIComponent(this.data.contentArray[res.target.id].title.trim().substring(0, 5)) + '...&fontSize=30&width=250&height=200&fontColor=ff5a00',
+        imageUrl: this.data.contentArray[res.target.id].titlepic,
         success: (res) => {
           wx.showToast({
             content: '分享成功'
