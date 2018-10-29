@@ -36,7 +36,7 @@ Page({
     let that = this;
     let _arr = this.data.contentArray;
     wx.request({
-      url: 'https://jianjiexcx.92kaifa.com/touxiangApi/?getJson=column&classid=' + classid,
+      url: 'https://www.yishuzi.com.cn/touxiangApi/?getJson=column&classid=' + classid,
       method: 'GET',
       dataType: 'json',
       success: (json) => {
@@ -46,7 +46,7 @@ Page({
           for (let index = 0; index < json.data.result.length; index++) {
             _newArr.push({
               title: json.data.result[index].title,
-              titlepic: 'https://jianjiexcx.92kaifa.com/allStaticFiles' + json.data.result[index].titlepic.substring(30)
+              titlepic: 'https://www.yishuzi.com.cn/allStaticFiles' + json.data.result[index].titlepic.substring(30)
             });
           };
           _arr = _arr.concat(_newArr);
@@ -59,7 +59,7 @@ Page({
           for (let index = 0; index < json.data.result.length; index++) {
             _newArr.push({
               title: json.data.result[index].title,
-              titlepic: 'https://jianjiexcx.92kaifa.com/allStaticFiles' + json.data.result[index].titlepic.substring(30)
+              titlepic: 'https://www.yishuzi.com.cn/allStaticFiles' + json.data.result[index].titlepic.substring(30)
             });
           };
           console.log('===',_newArr);
@@ -108,7 +108,7 @@ Page({
     let _classid = [];
     let _expertListi = [];
     wx.request({
-      url: 'https://jianjiexcx.92kaifa.com/touxiangApi/?getJson=class',
+      url: 'https://www.yishuzi.com.cn/touxiangApi/?getJson=class',
       method: 'GET',
       dataType: 'json',
       success: (json) => {

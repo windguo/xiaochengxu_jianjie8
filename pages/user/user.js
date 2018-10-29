@@ -9,7 +9,7 @@ Page({
       title: this.data.contentArray[res.target.id].title,
       // path:'/',
       // desc: this.data.contentArray[res.target.id].title,
-      imageUrl: 'https://jianjiexcx.92kaifa.com/e/api/creat/get.php?getJson=showPic&font=610&text=' + this.data.contentArray[res.target.id].title +'&fontSize=28&width=250&height=60&fontColor=ff5a00',
+      imageUrl: 'https://www.yishuzi.com.cn/e/api/creat/get.php?getJson=showPic&font=610&text=' + this.data.contentArray[res.target.id].title +'&fontSize=28&width=250&height=60&fontColor=ff5a00',
       success: (res) => {
         wx.showToast({
           content: '分享成功'
@@ -53,7 +53,7 @@ Page({
     let that = this;
     let _arr = this.data.contentArray;
     wx.request({
-      url: 'https://jianjiexcx.92kaifa.com/wangmingApi/?getJson=column&classid=' + classid,
+      url: 'https://www.yishuzi.com.cn/wangmingApi/?getJson=column&classid=' + classid,
       method: 'GET',
       dataType: 'json',
       success: (json) => {
@@ -107,7 +107,7 @@ Page({
     let _classid = [];
     let _expertListi = [];
     wx.request({
-      url: 'https://jianjiexcx.92kaifa.com/wangmingApi/?getJson=class',
+      url: 'https://www.yishuzi.com.cn/wangmingApi/?getJson=class',
       method: 'GET',
       dataType: 'json',
       success: (json) => {

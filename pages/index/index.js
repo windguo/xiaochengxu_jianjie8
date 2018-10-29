@@ -52,7 +52,7 @@ Page({
     let that = this;
     let _arr = this.data.contentArray;
     wx.request({
-      url: 'https://jianjiexcx.92kaifa.com/wangmingApi/?getJson=column&classid=' + classid,
+      url: 'https://www.yishuzi.com.cn/wangmingApi/?getJson=column&classid=' + classid,
       method: 'GET',
       dataType: 'json',
       success: (json) => {
@@ -106,7 +106,7 @@ Page({
     let _classid = [];
     let _expertListi = [];
     wx.request({
-      url: 'https://jianjiexcx.92kaifa.com/wangmingApi/?getJson=class',
+      url: 'https://www.yishuzi.com.cn/wangmingApi/?getJson=class',
       method: 'GET',
       dataType: 'json',
       success: (json) => {
