@@ -13,6 +13,8 @@
     "pages/touxiang_detail/touxiang_detail",
     "pages/biaoqing/biaoqing",
     "pages/biaoqing_detail/biaoqing_detail",
+    "pages/wangming/wangming",
+    "pages/wangming_detail/wangming_detail",
     "pages/node/node",
     "pages/latest/latest",
     "pages/hotest/hotest",

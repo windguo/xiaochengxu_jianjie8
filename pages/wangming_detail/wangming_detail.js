@@ -59,14 +59,13 @@ Page({
             title: '详情页'
         })
         wx.request({
-            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/show/?getJson=content&id=' + options.id,
+            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/wangming/?getJson=content&id=' + options.id,
             method: 'GET',
             dataType: 'json',
             success: (json) => {
-                var that = this;
-                WxParse.wxParse('article', 'html', json.data.result['newstext'], that, 5);
                 this.setData({
-                    title:json.data.result['title']
+                    title:json.data.result['title'],
+                    ftitle:json.data.result['ftitle']
                 });
                 wx.hideLoading();
             }
