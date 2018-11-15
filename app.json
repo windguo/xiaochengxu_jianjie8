@@ -1,32 +1,51 @@
 {
   "pages":[
+    "pages/index/index",
+    "pages/show/show",
+    "pages/show_detail/show_detail",
+    "pages/meiwen/meiwen",
+    "pages/meiwen_detail/meiwen_detail",
+    "pages/meitu/meitu",
+    "pages/meitu_detail/meitu_detail",
+    "pages/shuoshuo/shuoshuo",
+    "pages/shuoshuo_detail/shuoshuo_detail",
+    "pages/touxiang/touxiang",
+    "pages/touxiang_detail/touxiang_detail",
     "pages/biaoqing/biaoqing",
-    "pages/wangming/wangming",
-    "pages/qianming/qianming",
-    "pages/user/user",
-    "pages/logs/logs"
+    "pages/biaoqing_detail/biaoqing_detail",
+    "pages/node/node",
+    "pages/latest/latest",
+    "pages/hotest/hotest",
+    "pages/topicList/topicList",
+    "pages/detail/detail"
   ],
-  "tabBar": {
-      "selectedColor": "#ff4f41",
-    "list": [
-      {
-        "pagePath": "pages/biaoqing/biaoqing",
-        "text": "表情大全"
-      },
-      {
-        "pagePath": "pages/wangming/wangming",
-        "text": "网名大全"
-      },
-      {
-        "pagePath": "pages/qianming/qianming",
-        "text": "签名大全"
-      }
-    ]
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "简洁设计网",
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh":true
   },
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#ff4f41",
-    "navigationBarTitleText": "",
-    "navigationBarTextStyle": "white"
+  "tabBar": {
+    "color":"#000",
+    "selectedColor":"#56abe4",
+    "backgroundColor":"#fff",
+    "borderStyle":"white",
+    "list": [{
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/node.png",
+        "selectedIconPath": "images/node_on.png"
+      },{
+      "pagePath": "pages/latest/latest",
+      "text": "最新",
+      "iconPath":"images/latest.png",
+      "selectedIconPath":"images/lastest_on.png"
+    }, {
+      "pagePath": "pages/hotest/hotest",
+      "text": "最热",
+      "iconPath":"images/hotest.png",
+      "selectedIconPath":"images/hotest_on.png"
+    }]
   }
 }

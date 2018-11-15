@@ -1,0 +1,6 @@
+@import "/wxParse/wxParse.wxss";
+
+.show_content{padding:30rpx;border-top: 10rpx solid #eee;}
+.show_content h1{padding:50rpx 0;text-align: center;display: block;font-size: 40rpx;}
+.show_content .cont{line-height: 60rpx;padding:30rpx;}
+.show_content .wxParse-p{color: #666;padding:30rpx 0}

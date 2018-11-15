@@ -1,6 +1,41 @@
-<view class="container">
-  <navigator url="../../pages/biaoqing/biaoqing">
-    表情
-  </navigator>
-  
+<!--node.wxml-->
+<view class="container bgeee">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <swiper-item>
+      <view class="swiper_item" style="background:#FF1493;color:#ffff00;">限时免费生成各类艺术字</view>
+    </swiper-item>
+    <swiper-item>
+      <view class="swiper_item" style="background:#1E90FF;color:#ffff00;">目前共收录了{{total}}个字体</view>
+    </swiper-item>
+    <swiper-item>
+      <view class="swiper_item" style="background:#FF00FF;color:#ffff00;font-size:40rpx;">
+        <navigator target="miniProgram" open-type="navigate" app-id="wxb2e976cef0f6facb" path="" extra-data="" version="release">
+          头像图片精选(各类头像和图片集散地)
+        </navigator>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="swiper_item" style="background:#4B0082;color:#ffff00;font-size:40rpx;">
+        <navigator target="miniProgram" open-type="navigate" app-id="wx8041cab51c6ffcff" path="" extra-data="" version="release">
+          说说、头像、表情、网名、签名大全
+        </navigator>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class="swiper_item" style="background:#6495ED;color:#ffff00;font-size:50rpx;">
+        <navigator target="miniProgram" open-type="navigate" app-id="wx8041cab51c6ffcff" path="" extra-data="" version="release">
+          海量个性网名
+        </navigator>
+      </view>
+    </swiper-item>
+  </swiper>
+  <view class="node-list">
+    <block wx:for="{{nodes}}">
+      <view class="node-item"><navigator url="../{{item.classpath}}/{{item.classpath}}" hover-class="navigator-hover">{{item.classname}}</navigator>
+      </view>
+    </block>
+  </view>
+  <loading hidden="{{hidden}}">
+    加载中...
+  </loading>
 </view>
