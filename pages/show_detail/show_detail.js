@@ -24,9 +24,11 @@ Page({
                 }
             }
         } else {
+            console.log('/pages/show_detail/show_detail?id=' + this.data.id);
             return {
-                title: '简洁设计网提供表情、签名、网名等个性素材。',
-                imageUrl: '../../indexPic.png',
+                title: this.data.title,
+                imageUrl: this.data.titlepic,
+                path: '/pages/show_detail/show_detail?id=' + this.data.id,
                 success: (res) => {
                     wx.showToast({
                         content: '分享成功'
@@ -50,7 +52,9 @@ Page({
         expertListId: [],
         _windowWidth: wx.getSystemInfoSync().windowWidth,
         contentArray: [],
+        id:'0',
         title:'',
+        titlepic:'',
         newstext:''
     },
     onLoad: function (options) {
@@ -66,7 +70,9 @@ Page({
                 var that = this;
                 WxParse.wxParse('article', 'html', json.data.result['newstext'], that, 5);
                 this.setData({
-                    title:json.data.result['title']
+                    title:json.data.result['title'],
+                    titlepic:json.data.result['titlepic'],
+                    id:options.id
                 });
                 wx.hideLoading();
             }
@@ -84,5 +90,50 @@ Page({
                 });
             }
         });
-    }
+        this.getListData(this.data.currentTab);
+    },
+    getListData: function (classid, more) {
+        let that = this;
+        let _arr = this.data.contentArray;
+        wx.request({
+            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/show/?getJson=column&classid=' + classid,
+            method: 'GET',
+            dataType: 'json',
+            success: (json) => {
+                console.log('json.data.result---', json);
+                if (more) {
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            titlepic: 'https://www.yishuzi.com.cn/allStaticFiles' + json.data.result[index].titlepic.substring(30)
+                        });
+                    };
+                    _arr = _arr.concat(_newArr);
+                    that.setData({
+                        contentArray: _arr
+                    });
+                } else {
+
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            titlepic: 'https://www.yishuzi.com.cn/allStaticFiles' + json.data.result[index].titlepic.substring(30)
+                        });
+                    };
+                    console.log('===', _newArr);
+                    that.setData({
+                        contentArray: _newArr
+                    });
+                };
+                console.log('contentArray--==', this.data.contentArray);
+                wx.hideLoading();
+            }
+        })
+    },
 })

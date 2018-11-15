@@ -23,8 +23,8 @@ Page({
             }
         } else {
             return {
-                title: '海量各类设计作品更新中...',
-                path: '/pages/show/show',
+                title: '简洁设计网提供表情、签名、网名等个性素材。',
+                imageUrl: '../../indexPic.png',
                 success: (res) => {
                     wx.showToast({
                         content: '分享成功'
@@ -51,11 +51,10 @@ Page({
     },
 
     getListData: function (classid, more) {
-        console.log('https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/show/?getJson=column&classid=' + classid);
         let that = this;
         let _arr = this.data.contentArray;
         wx.request({
-            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/show/?getJson=column&classid=' + classid,
+            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/qianming/?getJson=column&classid=' + classid,
             method: 'GET',
             dataType: 'json',
             success: (json) => {
@@ -66,8 +65,8 @@ Page({
                         _newArr.push({
                             classid: json.data.result[index].classid,
                             id: json.data.result[index].id,
-                            title: json.data.result[index].title,
-                            titlepic: 'https://www.yishuzi.com.cn/allStaticFiles' + json.data.result[index].titlepic.substring(30)
+                            ftitle: json.data.result[index].ftitle,
+                            title: json.data.result[index].title
                         });
                     };
                     _arr = _arr.concat(_newArr);
@@ -75,14 +74,13 @@ Page({
                         contentArray: _arr
                     });
                 } else {
-
                     let _newArr = [];
                     for (let index = 0; index < json.data.result.length; index++) {
                         _newArr.push({
                             classid: json.data.result[index].classid,
                             id: json.data.result[index].id,
-                            title: json.data.result[index].title,
-                            titlepic: 'https://www.yishuzi.com.cn/allStaticFiles' + json.data.result[index].titlepic.substring(30)
+                            ftitle: json.data.result[index].ftitle,
+                            title: json.data.result[index].title
                         });
                     };
                     console.log('===', _newArr);
@@ -126,12 +124,12 @@ Page({
     onLoad: function () {
         wx.showLoading({})
         wx.setNavigationBarTitle({
-            title: '设计欣赏'
+            title: '个性签名大全'
         })
         let _classid = [];
         let _expertListi = [];
         wx.request({
-            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/show/?getJson=class',
+            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/qianming/?getJson=class',
             method: 'GET',
             dataType: 'json',
             success: (json) => {

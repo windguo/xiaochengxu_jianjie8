@@ -59,7 +59,7 @@ Page({
             title: '详情页'
         })
         wx.request({
-            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/wangming/?getJson=content&id=' + options.id,
+            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/qianming/?getJson=content&id=' + options.id,
             method: 'GET',
             dataType: 'json',
             success: (json) => {
