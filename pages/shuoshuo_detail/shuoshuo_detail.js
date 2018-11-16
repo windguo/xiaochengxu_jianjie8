@@ -10,8 +10,8 @@ Page({
             // 来自页面内转发按钮
             console.log('res.target===', res.target);
             return {
-                title: this.data.contentArray[res.target.id].title,
-                imageUrl: this.data.contentArray[res.target.id].titlepic,
+                title: this.data.title,
+                path: '/pages/meiwen_detail/meiwen_detail?id=' + this.data.id,
                 success: (res) => {
                     wx.showToast({
                         content: '分享成功'
@@ -25,8 +25,8 @@ Page({
             }
         } else {
             return {
-                title: '简洁设计网提供表情、签名、网名等个性素材。',
-                imageUrl: '../../indexPic.png',
+                title: this.data.title,
+                path: '/pages/meiwen_detail/meiwen_detail?id=' + this.data.id,
                 success: (res) => {
                     wx.showToast({
                         content: '分享成功'
@@ -51,12 +51,13 @@ Page({
         _windowWidth: wx.getSystemInfoSync().windowWidth,
         contentArray: [],
         title:'',
+        id:'',
         newstext:''
     },
     onLoad: function (options) {
         wx.showLoading({})
         wx.setNavigationBarTitle({
-            title: '详情页'
+            title: '说说详情页'
         })
         wx.request({
             url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/shuoshuo/?getJson=content&id=' + options.id,
@@ -66,7 +67,9 @@ Page({
                 var that = this;
                 WxParse.wxParse('article', 'html', json.data.result['newstext'], that, 5);
                 this.setData({
-                    title:json.data.result['title']
+                    title: json.data.result['title'],
+                    smalltext: json.data.result['smalltext'],
+                    id: options.id
                 });
                 wx.hideLoading();
             }
@@ -84,5 +87,66 @@ Page({
                 });
             }
         });
+        this.getListData(this.data.currentTab);
+    },
+    getListData: function (classid, more) {
+        let that = this;
+        let _arr = this.data.contentArray;
+        wx.request({
+            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/shuoshuo/?getJson=column&classid=' + classid,
+            method: 'GET',
+            dataType: 'json',
+            success: (json) => {
+                console.log('json.data.result---', json);
+                if (more) {
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            smalltext: json.data.result[index].smalltext
+                        });
+                    };
+                    _arr = _arr.concat(_newArr);
+                    that.setData({
+                        contentArray: _arr
+                    });
+                } else {
+
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            smalltext: json.data.result[index].smalltext
+                        });
+                    };
+                    console.log('===', _newArr);
+                    that.setData({
+                        contentArray: _newArr
+                    });
+                };
+                console.log('contentArray--==', this.data.contentArray);
+                wx.hideLoading();
+            }
+        })
+    },
+    copyTBL: function (e) {
+        console.log('wwweeee', e);
+        var self = this;
+        wx.setClipboardData({
+            data: e.currentTarget.dataset.text.trim(),
+            success: function (res) {
+                wx.getClipboardData({
+                    success: function (res) {
+                        wx.showToast({
+                            title: '复制成功',
+                        })
+                    }
+                })
+            }
+        })
     }
 })

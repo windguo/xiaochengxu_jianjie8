@@ -6,8 +6,8 @@
   padding: 0;
   box-sizing: border-box;
 }
+.navigator-hover{background: none!important;}
 .bgeee{background: #eee;}
-
 .header {
     height: 80rpx;
     display: flex;

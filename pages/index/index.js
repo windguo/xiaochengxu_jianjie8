@@ -42,10 +42,17 @@ Page({
         nodes: [],
         winHeight: 100,
         hidden: false,
-
         interval: 5000,
         duration: 500,
-        autoplay: true
+        autoplay: true,
+        contentArray:[],
+        contentMeiwenArray:[],
+        contentshuoshuoArray:[],
+        contentwangmingArray:[],
+        contenttouxiangArray:[],
+        contentbiaoqingArray:[],
+        contentqianmingArray:[],
+        contentMeituArray:[]
     },
     fetchData: function () {
         var that = this;
@@ -63,12 +70,374 @@ Page({
                     that.setData({
                         hidden: true
                     })
-                }, 300)
+                }, 300);
+                wx.hideLoading();
             }
         })
     },
     onLoad: function () {
+        wx.showLoading({})
         this.fetchData();
+        this.getShowListData(this.data.currentTab);
+        this.getMeituListData(this.data.currentTab);
+        this.getMeiwenListData(this.data.currentTab);
+        this.getshuoshuoListData(this.data.currentTab);
+        this.getwangmingListData(this.data.currentTab);
+        this.gettouxiangListData(this.data.currentTab);
+        this.getbiaoqingListData(this.data.currentTab);
+        this.getqianmingListData(this.data.currentTab);
+    },
+    getShowListData: function (classid, more) {
+        let that = this;
+        let _arr = this.data.contentArray;
+        wx.request({
+            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/show/?getJson=column&pageSize=4&classid=' + classid,
+            method: 'GET',
+            dataType: 'json',
+            success: (json) => {
+                console.log('json.data.result---', json);
+                if (more) {
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            titlepic: 'https://www.yishuzi.com.cn/allStaticFiles' + json.data.result[index].titlepic.substring(30)
+                        });
+                    };
+                    _arr = _arr.concat(_newArr);
+                    that.setData({
+                        contentArray: _arr
+                    });
+                } else {
+
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            titlepic: 'https://www.yishuzi.com.cn/allStaticFiles' + json.data.result[index].titlepic.substring(30)
+                        });
+                    };
+                    console.log('===', _newArr);
+                    that.setData({
+                        contentArray: _newArr
+                    });
+                };
+                console.log('contentArray--==', this.data.contentArray);
+                wx.hideLoading();
+            }
+        })
+    },
+    getMeituListData: function (classid, more) {
+        let that = this;
+        let _arr = this.data.contentMeituArray;
+        wx.request({
+            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/meitu/?getJson=column&pageSize=4&classid=' + classid,
+            method: 'GET',
+            dataType: 'json',
+            success: (json) => {
+                console.log('json.data.result---', json);
+                if (more) {
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            titlepic: 'https://www.yishuzi.com.cn/allStaticFiles' + json.data.result[index].titlepic.substring(30)
+                        });
+                    };
+                    _arr = _arr.concat(_newArr);
+                    that.setData({
+                        contentMeituArray: _arr
+                    });
+                } else {
+
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            titlepic: 'https://www.yishuzi.com.cn/allStaticFiles' + json.data.result[index].titlepic.substring(30)
+                        });
+                    };
+                    console.log('===', _newArr);
+                    that.setData({
+                        contentMeituArray: _newArr
+                    });
+                };
+                console.log('contentMeituArray--==', this.data.contentMeituArray);
+                wx.hideLoading();
+            }
+        })
+    },
+    gettouxiangListData: function (classid, more) {
+        let that = this;
+        let _arr = this.data.contenttouxiangArray;
+        wx.request({
+            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/touxiang/?getJson=column&pageSize=4&classid=' + classid,
+            method: 'GET',
+            dataType: 'json',
+            success: (json) => {
+                console.log('json.data.result---', json);
+                if (more) {
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            titlepic: 'https://www.yishuzi.com.cn/allStaticFiles' + json.data.result[index].titlepic.substring(30)
+                        });
+                    };
+                    _arr = _arr.concat(_newArr);
+                    that.setData({
+                        contenttouxiangArray: _arr
+                    });
+                } else {
+
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            titlepic: 'https://www.yishuzi.com.cn/allStaticFiles' + json.data.result[index].titlepic.substring(30)
+                        });
+                    };
+                    console.log('===', _newArr);
+                    that.setData({
+                        contenttouxiangArray: _newArr
+                    });
+                };
+                console.log('contenttouxiangArray--==', this.data.contenttouxiangArray);
+                wx.hideLoading();
+            }
+        })
+    },
+    getbiaoqingListData: function (classid, more) {
+        let that = this;
+        let _arr = this.data.contentbiaoqingArray;
+        wx.request({
+            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/biaoqing/?getJson=column&pageSize=4&classid=' + classid,
+            method: 'GET',
+            dataType: 'json',
+            success: (json) => {
+                console.log('json.data.result---', json);
+                if (more) {
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            titlepic: 'https://www.yishuzi.com.cn/allStaticFiles' + json.data.result[index].titlepic.substring(30)
+                        });
+                    };
+                    _arr = _arr.concat(_newArr);
+                    that.setData({
+                        contentbiaoqingArray: _arr
+                    });
+                } else {
+
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            titlepic: 'https://www.yishuzi.com.cn/allStaticFiles' + json.data.result[index].titlepic.substring(30)
+                        });
+                    };
+                    console.log('===', _newArr);
+                    that.setData({
+                        contentbiaoqingArray: _newArr
+                    });
+                };
+                console.log('contentbiaoqingArray--==', this.data.contentbiaoqingArray);
+                wx.hideLoading();
+            }
+        })
+    },
+    getMeiwenListData: function (classid, more) {
+        let that = this;
+        let _arr = this.data.contentMeiwenArray;
+        wx.request({
+            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/meiwen/?getJson=column&pageSize=4&classid=' + classid,
+            method: 'GET',
+            dataType: 'json',
+            success: (json) => {
+                console.log('json.data.result---', json);
+                if (more) {
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            smalltext: json.data.result[index].smalltext
+                        });
+                    };
+                    _arr = _arr.concat(_newArr);
+                    that.setData({
+                        contentMeiwenArray: _arr
+                    });
+                } else {
+
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            smalltext: json.data.result[index].smalltext
+                        });
+                    };
+                    console.log('===', _newArr);
+                    that.setData({
+                        contentMeiwenArray: _newArr
+                    });
+                };
+                console.log('contentMeiwenArray--==', this.data.contentMeiwenArray);
+                wx.hideLoading();
+            }
+        })
+    },
+    getshuoshuoListData: function (classid, more) {
+        let that = this;
+        let _arr = this.data.contentshuoshuoArray;
+        wx.request({
+            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/shuoshuo/?getJson=column&pageSize=4&classid=' + classid,
+            method: 'GET',
+            dataType: 'json',
+            success: (json) => {
+                console.log('json.data.result---', json);
+                if (more) {
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            smalltext: json.data.result[index].smalltext
+                        });
+                    };
+                    _arr = _arr.concat(_newArr);
+                    that.setData({
+                        contentshuoshuoArray: _arr
+                    });
+                } else {
+
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            smalltext: json.data.result[index].smalltext
+                        });
+                    };
+                    console.log('===', _newArr);
+                    that.setData({
+                        contentshuoshuoArray: _newArr
+                    });
+                };
+                console.log('contentshuoshuoArray--==', this.data.contentshuoshuoArray);
+                wx.hideLoading();
+            }
+        })
+    },
+    getwangmingListData: function (classid, more) {
+        let that = this;
+        let _arr = this.data.contentwangmingArray;
+        wx.request({
+            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/wangming/?getJson=column&pageSize=4&classid=' + classid,
+            method: 'GET',
+            dataType: 'json',
+            success: (json) => {
+                console.log('json.data.result---', json);
+                if (more) {
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            smalltext: json.data.result[index].smalltext
+                        });
+                    };
+                    _arr = _arr.concat(_newArr);
+                    that.setData({
+                        contentwangmingArray: _arr
+                    });
+                } else {
+
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            smalltext: json.data.result[index].smalltext
+                        });
+                    };
+                    console.log('===', _newArr);
+                    that.setData({
+                        contentwangmingArray: _newArr
+                    });
+                };
+                console.log('contentwangmingArray--==', this.data.contentwangmingArray);
+                wx.hideLoading();
+            }
+        })
+    },
+    getqianmingListData: function (classid, more) {
+        let that = this;
+        let _arr = this.data.contentqianmingArray;
+        wx.request({
+            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/qianming/?getJson=column&pageSize=4&classid=' + classid,
+            method: 'GET',
+            dataType: 'json',
+            success: (json) => {
+                console.log('json.data.result---', json);
+                if (more) {
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            smalltext: json.data.result[index].smalltext
+                        });
+                    };
+                    _arr = _arr.concat(_newArr);
+                    that.setData({
+                        contentqianmingArray: _arr
+                    });
+                } else {
+
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            smalltext: json.data.result[index].smalltext
+                        });
+                    };
+                    console.log('===', _newArr);
+                    that.setData({
+                        contentqianmingArray: _newArr
+                    });
+                };
+                console.log('contentqianmingArray--==', this.data.contentqianmingArray);
+                wx.hideLoading();
+            }
+        })
     },
     // 滚动切换标签样式
     swiperChange: function (e) {

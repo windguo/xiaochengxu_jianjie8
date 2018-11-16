@@ -8,8 +8,8 @@ Page({
             // 来自页面内转发按钮
             console.log('res.target===', res.target);
             return {
-                title: this.data.contentArray[res.target.id].title,
-                imageUrl: this.data.contentArray[res.target.id].titlepic,
+                title: this.data.title,
+                imageUrl: this.data.titlepic,
                 success: (res) => {
                     wx.showToast({
                         content: '分享成功'
@@ -23,8 +23,8 @@ Page({
             }
         } else {
             return {
-                title: '简洁设计网提供表情、签名、网名等个性素材。',
-                imageUrl: '../../indexPic.png',
+                title: '超十万个网名供您选择,持续更新中...',
+                path: '/pages/wangming/wangming',
                 success: (res) => {
                     wx.showToast({
                         content: '分享成功'

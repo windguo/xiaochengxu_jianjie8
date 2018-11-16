@@ -1,11 +1,17 @@
 <!--node.wxml-->
-<view class="container bgeee">
+<view class="container">
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
     <swiper-item>
-      <view class="swiper_item" style="background:#FF1493;color:#ffff00;">限时免费生成各类艺术字</view>
+      <view class="swiper_item" style="background:#FF1493;color:#ffff00;">
+        简洁设计网小程序上线啦
+      </view>
     </swiper-item>
     <swiper-item>
-      <view class="swiper_item" style="background:#1E90FF;color:#ffff00;">目前共收录了{{total}}个字体</view>
+      <view class="swiper_item" style="background:#1E90FF;color:#ffff00;">
+        <navigator target="miniProgram" open-type="navigate" app-id="wx711d9992cb89aa05" path="" extra-data="" version="release">
+          限时免费生成各类艺术字
+        </navigator>
+      </view>
     </swiper-item>
     <swiper-item>
       <view class="swiper_item" style="background:#FF00FF;color:#ffff00;font-size:40rpx;">
@@ -15,27 +21,145 @@
       </view>
     </swiper-item>
     <swiper-item>
-      <view class="swiper_item" style="background:#4B0082;color:#ffff00;font-size:40rpx;">
-        <navigator target="miniProgram" open-type="navigate" app-id="wx8041cab51c6ffcff" path="" extra-data="" version="release">
-          说说、头像、表情、网名、签名大全
-        </navigator>
-      </view>
-    </swiper-item>
-    <swiper-item>
       <view class="swiper_item" style="background:#6495ED;color:#ffff00;font-size:50rpx;">
-        <navigator target="miniProgram" open-type="navigate" app-id="wx8041cab51c6ffcff" path="" extra-data="" version="release">
-          海量个性网名
+        <navigator target="miniProgram" open-type="navigate" app-id="wxa12f1b4e608253f8" path="" extra-data="" version="release">
+          超十万个个性网名,持续更新中...
         </navigator>
       </view>
     </swiper-item>
   </swiper>
   <view class="node-list">
     <block wx:for="{{nodes}}">
-      <view class="node-item"><navigator url="../{{item.classpath}}/{{item.classpath}}" hover-class="navigator-hover">{{item.classname}}</navigator>
-      </view>
+      <navigator class="node-item" url="../{{item.classpath}}/{{item.classpath}}" hover-class="navigator-hover">
+        {{item.classname}}
+      </navigator>
     </block>
   </view>
-  <loading hidden="{{hidden}}">
-    加载中...
-  </loading>
+  <view class="shows">
+    <h2>
+      <navigator class="h2s" url="../show/show" hover-class="navigator-hover">
+        设计欣赏
+      </navigator>
+    </h2>
+    <view class="layout_vertical">
+      <view wx:for="{{contentArray}}" class="listViews" wx:for-index="i" wx:for-item="item" data-text="{{item.title}}">
+        <navigator url="../show_detail/show_detail?classid={{item.classid}}&id={{item.id}}" hover-class="navigator-hover">
+          <image bindtap="s" style="width:320rpx;height:240rpx;border-radius:10rpx;" src="{{item.titlepic}}"></image>
+          <h3>{{item.title}}</h3>
+        </navigator>
+      </view>
+    </view>
+  </view>
+
+  <view class="articleList">
+    <h2>
+      <navigator class="h2s" url="../wangming/wangming" hover-class="navigator-hover">
+        网名大全
+      </navigator>
+    </h2>
+    <view>
+      <view wx:for="{{contentwangmingArray}}" class="listViews" wx:for-index="i" wx:for-item="item" data-text="{{item.title}}">
+        <navigator url="../wangming_detail/wangming_detail?classid={{item.classid}}&id={{item.id}}" hover-class="navigator-hover">
+          <h3>{{item.title}}</h3>
+          <h4>{{item.ftitle}}</h4>
+        </navigator>
+      </view>
+    </view>
+  </view> 
+  <view class="shows">
+    <h2>
+      <navigator class="h2s" url="../meitu/meitu" hover-class="navigator-hover">
+        图片大全
+      </navigator>
+    </h2>
+    <view class="layout_vertical">
+      <view wx:for="{{contentMeituArray}}" class="listViews" wx:for-index="i" wx:for-item="item" data-text="{{item.title}}">
+        <navigator url="../meitu_detail/meitu_detail?classid={{item.classid}}&id={{item.id}}" hover-class="navigator-hover">
+          <image bindtap="s" style="width:320rpx;height:240rpx;border-radius:10rpx;" src="{{item.titlepic}}"></image>
+          <h3>{{item.title}}</h3>
+        </navigator>
+      </view>
+    </view>
+  </view>
+
+  <view class="articleList">
+    <h2>
+      <navigator class="h2s" url="../meiwen/meiwen" hover-class="navigator-hover">
+        经典美文
+      </navigator>
+    </h2>
+    <view>
+      <view wx:for="{{contentMeiwenArray}}" class="listViews" wx:for-index="i" wx:for-item="item" data-text="{{item.title}}">
+        <navigator url="../meiwen_detail/meiwen_detail?classid={{item.classid}}&id={{item.id}}" hover-class="navigator-hover">
+          <h3>{{item.title}}</h3>
+          <p>{{item.smalltext}}</p>
+        </navigator>
+      </view>
+    </view>
+  </view>
+
+  <view class="shows">
+    <h2>
+      <navigator class="h2s" url="../biaoqing/biaoqing" hover-class="navigator-hover">
+        斗图表情
+      </navigator>
+    </h2>
+    <view class="layout_vertical">
+      <view wx:for="{{contentbiaoqingArray}}" class="listViews" wx:for-index="i" wx:for-item="item" data-text="{{item.title}}">
+        <navigator url="../biaoqing_detail/biaoqing_detail?classid={{item.classid}}&id={{item.id}}" hover-class="navigator-hover">
+          <image bindtap="s" style="width:320rpx;height:240rpx;border-radius:10rpx;" src="{{item.titlepic}}"></image>
+          <h3>{{item.title}}</h3>
+        </navigator>
+      </view>
+    </view>
+  </view>
+
+  <view class="articleList">
+    <h2>
+      <navigator class="h2s" url="../shuoshuo/shuoshuo" hover-class="navigator-hover">
+        说说大全
+      </navigator>
+    </h2>
+    <view>
+      <view wx:for="{{contentshuoshuoArray}}" class="listViews" wx:for-index="i" wx:for-item="item" data-text="{{item.title}}">
+        <navigator url="../shuoshuo_detail/shuoshuo_detail?classid={{item.classid}}&id={{item.id}}" hover-class="navigator-hover">
+          <h3>{{item.title}}</h3>
+          <p>{{item.smalltext}}</p>
+        </navigator>
+      </view>
+    </view>
+  </view>
+
+  <view class="shows">
+    <h2>
+      <navigator class="h2s" url="../touxiang/touxiang" hover-class="navigator-hover">
+        头像大全
+      </navigator>
+    </h2>
+    <view class="layout_vertical">
+      <view wx:for="{{contenttouxiangArray}}" class="listViews" wx:for-index="i" wx:for-item="item" data-text="{{item.title}}">
+        <navigator url="../touxiang_detail/touxiang_detail?classid={{item.classid}}&id={{item.id}}" hover-class="navigator-hover">
+          <image bindtap="s" style="width:320rpx;height:240rpx;border-radius:10rpx;" src="{{item.titlepic}}"></image>
+          <h3>{{item.title}}</h3>
+        </navigator>
+      </view>
+    </view>
+  </view>
+
+  <view class="articleList">
+    <h2>
+      <navigator class="h2s" url="../qianming/qianming" hover-class="navigator-hover">
+        个性签名大全
+      </navigator>
+    </h2>
+    <view>
+      <view wx:for="{{contentqianmingArray}}" class="listViews" wx:for-index="i" wx:for-item="item" data-text="{{item.title}}">
+        <navigator url="../qianming_detail/qianming_detail?classid={{item.classid}}&id={{item.id}}" hover-class="navigator-hover">
+          <h3>{{item.title}}</h3>
+          <h3>{{item.ftitle}}</h3>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <view class="footer">客服QQ或微信:275333(备注:小程序)</view>
 </view>

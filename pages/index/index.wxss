@@ -1,27 +1,52 @@
-swiper{height:260rpx;font-weight: 300}
-.swiper_item{text-align:center;font-size:50rpx;line-height:260rpx;height:260rpx;}
+swiper{height:160rpx;}
+.swiper_item{text-align:center;font-size:50rpx;line-height:160rpx;height:160rpx;}
 
-
+.navigator-hover{background: #f9f9f9!important;}
 .node-list{
     display: flex;
     flex-flow: wrap;
-    margin:90rpx 0 50rpx 34rpx;
+    margin:40rpx 0 0rpx 34rpx;
 }
 .node-item {
     width: 38%;
     font-size:40rpx;
-    background: #fff;
-    border-radius: 30rpx;
+    background: #eee;
+    border-radius: 20rpx;
     padding:30rpx;
     color:#333;
     text-align: center;
     margin-right: 30rpx;
-    margin-bottom: 50rpx;
+    margin-bottom: 20rpx;
 }
-.node-item:nth-child(2){
-    display:none;
-}
+.node-item:nth-child(2){display:none;}
+.node-item:nth-child(1){background: Turquoise}
+.node-item:nth-child(3){background: LightGreen}
+.node-item:nth-child(4){background: LightPink}
+.node-item:nth-child(5){background: SkyBlue}
+.node-item:nth-child(6){background: LightSteelBlue}
+.node-item:nth-child(7){background: LightSalmon}
+.node-item:nth-child(8){background: Violet}
+.node-item:nth-child(9){background: LightBLue}
 
 .node-title {
     padding-left:30px;
 }
+
+.layout_vertical{
+  flex-flow: row wrap;
+  display: flex;
+  flex-direction: row;
+  margin:0 20rpx;
+}
+.shows{background: #efefef;padding:0rpx 0 30rpx 0;border-top:30rpx solid #fff;}
+.shows .h2s{text-align: center;display: block;padding:30rpx 0;}
+.shows .listViews{flex:1;margin:10rpx;background:#fff;padding:10rpx;border-radius: 10rpx;}
+.shows .listViews h3{font-size: 32rpx;padding:20rpx;}
+
+.articleList{background: #efefef;border-top:30rpx solid #fff;}
+.articleList .h2s{text-align: center;display: block;padding:30rpx 0 0;}
+.articleList .listViews{margin:30rpx;background:#fff;padding:40rpx;border-radius: 20rpx;}
+.articleList .listViews h3{font-size: 36rpx;display:block;padding-bottom:20rpx;}
+.articleList .listViews p{font-size:30rpx;color: #666;}
+
+.footer{font-size:32rpx;padding:30rpx 0;text-align:center;}

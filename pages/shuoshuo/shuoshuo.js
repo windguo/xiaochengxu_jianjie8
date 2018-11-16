@@ -8,8 +8,8 @@ Page({
             // 来自页面内转发按钮
             console.log('res.target===', res.target);
             return {
-                title: this.data.contentArray[res.target.id].title,
-                imageUrl: this.data.contentArray[res.target.id].titlepic,
+                title: '各类个性说说每日更新...',
+                path: '/pages/shuoshuo/shuoshuo',
                 success: (res) => {
                     wx.showToast({
                         content: '分享成功'
@@ -23,8 +23,8 @@ Page({
             }
         } else {
             return {
-                title: '简洁设计网提供表情、签名、网名等个性素材。',
-                imageUrl: '../../indexPic.png',
+                title: '各类个性说说每日更新...',
+                path: '/pages/shuoshuo/shuoshuo',
                 success: (res) => {
                     wx.showToast({
                         content: '分享成功'
@@ -93,6 +93,7 @@ Page({
             }
         })
     },
+    
     // 滚动切换标签样式
     swiperChange: function (e) {
         console.log('swiperChange==e', e);

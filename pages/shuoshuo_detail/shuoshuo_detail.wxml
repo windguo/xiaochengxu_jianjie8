@@ -6,6 +6,20 @@
     <h1>{{title}}</h1>
     <view class="cont">
       <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+      <view class="shareArea">
+        <button open-type="share" size='default' type="warn">分享给好友</button>
+      </view>
+    </view>
+  </view>
+  <view class="guess">
+    <h2>猜你喜欢</h2>
+    <view class="layout_vertical">
+      <view wx:for="{{contentArray}}" class="listViews" wx:for-index="i" wx:for-item="item" data-text="{{item.title}}">
+        <navigator url="../shuoshuo_detail/shuoshuo_detail?classid={{item.classid}}&id={{item.id}}" hover-class="navigator-hover">
+          <h3>{{item.title}}</h3>
+          <p>{{item.smalltext}}</p>
+        </navigator>
+      </view>
     </view>
   </view>
 </view>

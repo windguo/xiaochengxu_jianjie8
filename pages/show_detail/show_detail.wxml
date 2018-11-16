@@ -6,6 +6,9 @@
     <h1>{{title}}</h1>
     <view class="cont">
       <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+      <view class="shareArea">
+        <button open-type="share" size='default' type="warn">分享给好友</button>
+      </view>
     </view>
   </view>
   <view class="guess">

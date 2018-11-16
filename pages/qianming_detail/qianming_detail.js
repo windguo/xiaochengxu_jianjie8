@@ -1,8 +1,5 @@
 // latest.js
 var Api = require('../../utils/api.js');
-var WxParse = require('../../wxParse/wxParse.js')
-
-
 var app = getApp();
 Page({
     onShareAppMessage: function (res) {
@@ -10,8 +7,8 @@ Page({
             // 来自页面内转发按钮
             console.log('res.target===', res.target);
             return {
-                title: this.data.contentArray[res.target.id].title,
-                imageUrl: this.data.contentArray[res.target.id].titlepic,
+                title: this.data.title + '-' + this.data.ftitle,
+                path: '/pages/meiwen_detail/meiwen_detail?id=' + this.data.id,
                 success: (res) => {
                     wx.showToast({
                         content: '分享成功'
@@ -25,8 +22,8 @@ Page({
             }
         } else {
             return {
-                title: '简洁设计网提供表情、签名、网名等个性素材。',
-                imageUrl: '../../indexPic.png',
+                title: this.data.title + '-' + this.data.ftitle,
+                path: '/pages/meiwen_detail/meiwen_detail?id=' + this.data.id,
                 success: (res) => {
                     wx.showToast({
                         content: '分享成功'
@@ -50,22 +47,23 @@ Page({
         expertListId: [],
         _windowWidth: wx.getSystemInfoSync().windowWidth,
         contentArray: [],
-        title:'',
-        newstext:''
+        title: '',
+        ftitle: '',
+        newstext: ''
     },
     onLoad: function (options) {
         wx.showLoading({})
         wx.setNavigationBarTitle({
-            title: '详情页'
+            title: '签名详情页'
         })
         wx.request({
-            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/qianming/?getJson=content&id=' + options.id,
+            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/qianming?getJson=content&id=' + options.id,
             method: 'GET',
             dataType: 'json',
             success: (json) => {
                 this.setData({
-                    title:json.data.result['title'],
-                    ftitle:json.data.result['ftitle']
+                    title: json.data.result['title'],
+                    ftitle: json.data.result['ftitle']
                 });
                 wx.hideLoading();
             }
@@ -83,6 +81,51 @@ Page({
                 });
             }
         });
+        this.getListData(this.data.currentTab);
+    },
+    getListData: function (classid, more) {
+        let that = this;
+        let _arr = this.data.contentArray;
+        wx.request({
+            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/qianming?getJson=column&classid=' + classid,
+            method: 'GET',
+            dataType: 'json',
+            success: (json) => {
+                console.log('json.data.result---', json);
+                if (more) {
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            ftitle: json.data.result[index].ftitle
+                        });
+                    };
+                    _arr = _arr.concat(_newArr);
+                    that.setData({
+                        contentArray: _arr
+                    });
+                } else {
+
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            title: json.data.result[index].title,
+                            ftitle: json.data.result[index].ftitle
+                        });
+                    };
+                    console.log('===', _newArr);
+                    that.setData({
+                        contentArray: _newArr
+                    });
+                };
+                console.log('contentArray--==', this.data.contentArray);
+                wx.hideLoading();
+            }
+        })
     },
     copyTBL: function (e) {
         console.log('wwweeee', e);

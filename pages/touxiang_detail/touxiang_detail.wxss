@@ -2,4 +2,17 @@
 
 .show_content{padding:30rpx;border-top: 10rpx solid #eee;}
 .show_content h1{padding:50rpx 0;text-align: center;display: block;font-size: 40rpx;}
-.show_content .cont{margin:0 auto;}
+.show_content .cont{margin:0 auto;text-align: center}
+
+.layout_vertical{
+  flex-flow: row wrap;
+  display: flex;
+  flex-direction: row;
+  margin:20rpx;
+}
+.guess{background: #eee;padding-top:40rpx;}
+.guess h2{text-align: center;display: block;padding-bottom:10rpx;}
+.shareButton{margin-top:20rpx;width:100%;}
+.listViews{flex:1;margin:10rpx;background:#fff;padding:10rpx;border-radius: 10rpx;}
+.listViews h3{font-size: 32rpx;padding:20rpx;}
+.shareArea{text-align: center;padding:30rpx 0;}

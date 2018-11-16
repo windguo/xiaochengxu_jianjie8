@@ -8,8 +8,8 @@ Page({
             // 来自页面内转发按钮
             console.log('res.target===', res.target);
             return {
-                title: this.data.contentArray[res.target.id].title,
-                imageUrl: this.data.contentArray[res.target.id].titlepic,
+                title: this.data.title,
+                imageUrl: this.data.titlepic,
                 success: (res) => {
                     wx.showToast({
                         content: '分享成功'
@@ -23,8 +23,8 @@ Page({
             }
         } else {
             return {
-                title: '简洁设计网提供表情、签名、网名等个性素材。',
-                imageUrl: '../../indexPic.png',
+                title: '唯美、美女等类型图片持续更新中...',
+                path: '/pages/meitu/meitu',
                 success: (res) => {
                     wx.showToast({
                         content: '分享成功'
@@ -51,7 +51,6 @@ Page({
     },
 
     getListData: function (classid, more) {
-        console.log('https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/meitu/?getJson=column&classid=' + classid);
         let that = this;
         let _arr = this.data.contentArray;
         wx.request({

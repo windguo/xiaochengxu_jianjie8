@@ -10,8 +10,9 @@ Page({
             // 来自页面内转发按钮
             console.log('res.target===', res.target);
             return {
-                title: this.data.contentArray[res.target.id].title,
-                imageUrl: this.data.contentArray[res.target.id].titlepic,
+                title: this.data.title,
+                imageUrl: this.data.titlepic,
+                path: '/pages/show_detail/show_detail?id=' + this.data.id,
                 success: (res) => {
                     wx.showToast({
                         content: '分享成功'
@@ -24,7 +25,6 @@ Page({
                 }
             }
         } else {
-            console.log('/pages/show_detail/show_detail?id=' + this.data.id);
             return {
                 title: this.data.title,
                 imageUrl: this.data.titlepic,
@@ -52,7 +52,7 @@ Page({
         expertListId: [],
         _windowWidth: wx.getSystemInfoSync().windowWidth,
         contentArray: [],
-        id:'0',
+        id:'',
         title:'',
         titlepic:'',
         newstext:''
@@ -60,7 +60,7 @@ Page({
     onLoad: function (options) {
         wx.showLoading({})
         wx.setNavigationBarTitle({
-            title: '详情页'
+            title: '欣赏详情页'
         })
         wx.request({
             url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/show/?getJson=content&id=' + options.id,

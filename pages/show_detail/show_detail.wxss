@@ -16,3 +16,4 @@
 .shareButton{margin-top:20rpx;width:100%;}
 .listViews{flex:1;margin:10rpx;background:#fff;padding:10rpx;border-radius: 10rpx;}
 .listViews h3{font-size: 32rpx;padding:20rpx;}
+.shareArea{text-align: center;padding:30rpx 0;}
