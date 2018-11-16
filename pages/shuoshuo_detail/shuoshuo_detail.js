@@ -11,7 +11,7 @@ Page({
             console.log('res.target===', res.target);
             return {
                 title: this.data.title,
-                path: '/pages/meiwen_detail/meiwen_detail?id=' + this.data.id,
+                path: '/pages/shuoshuo_detail/shuoshuo_detail?id=' + this.data.id,
                 success: (res) => {
                     wx.showToast({
                         content: '分享成功'
@@ -26,7 +26,7 @@ Page({
         } else {
             return {
                 title: this.data.title,
-                path: '/pages/meiwen_detail/meiwen_detail?id=' + this.data.id,
+                path: '/pages/shuoshuo_detail/shuoshuo_detail?id=' + this.data.id,
                 success: (res) => {
                     wx.showToast({
                         content: '分享成功'

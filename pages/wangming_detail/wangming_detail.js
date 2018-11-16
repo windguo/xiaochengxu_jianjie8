@@ -8,7 +8,7 @@ Page({
             console.log('res.target===', res.target);
             return {
                 title: this.data.title + '-' + this.data.ftitle,
-                path: '/pages/meiwen_detail/meiwen_detail?id=' + this.data.id,
+                path: '/pages/wangming_detail/wangming_detail?id=' + this.data.id,
                 success: (res) => {
                     wx.showToast({
                         content: '分享成功'
@@ -23,7 +23,7 @@ Page({
         } else {
             return {
                 title: this.data.title + '-' + this.data.ftitle,
-                path: '/pages/meiwen_detail/meiwen_detail?id=' + this.data.id,
+                path: '/pages/wangming_detail/wangming_detail?id=' + this.data.id,
                 success: (res) => {
                     wx.showToast({
                         content: '分享成功'
