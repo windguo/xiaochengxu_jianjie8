@@ -118,7 +118,7 @@ Page({
     checkCor: function () {
         wx.showLoading({}),
             this.setData({
-                scrollLeft: this.data._windowWidth / 5 * this.data.currentTab - 100
+                scrollLeft: this.data._windowWidth / 3 * this.data.currentTab - 100
             });
     },
     onLoad: function () {

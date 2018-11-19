@@ -23,8 +23,8 @@ Page({
             }
         } else {
             return {
-                title: '超十万个网名供您选择,持续更新中...',
-                path: '/pages/wangming/wangming',
+                title: '各类爆笑笑话段子每日更新...',
+                path: '/pages/duanzi/duanzi',
                 success: (res) => {
                     wx.showToast({
                         content: '分享成功'
@@ -54,7 +54,7 @@ Page({
         let that = this;
         let _arr = this.data.contentArray;
         wx.request({
-            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/wangming/?getJson=column&classid=' + classid,
+            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/duanzi/?getJson=column&classid=' + classid,
             method: 'GET',
             dataType: 'json',
             success: (json) => {
@@ -65,7 +65,7 @@ Page({
                         _newArr.push({
                             classid: json.data.result[index].classid,
                             id: json.data.result[index].id,
-                            ftitle: json.data.result[index].ftitle,
+                            smalltext: json.data.result[index].smalltext,
                             title: json.data.result[index].title
                         });
                     };
@@ -79,7 +79,7 @@ Page({
                         _newArr.push({
                             classid: json.data.result[index].classid,
                             id: json.data.result[index].id,
-                            ftitle: json.data.result[index].ftitle,
+                            smalltext: json.data.result[index].smalltext,
                             title: json.data.result[index].title
                         });
                     };
@@ -118,18 +118,18 @@ Page({
     checkCor: function () {
         wx.showLoading({}),
             this.setData({
-                scrollLeft: this.data._windowWidth / 4 * this.data.currentTab - 100
+                scrollLeft: this.data._windowWidth / 5 * this.data.currentTab - 100
             });
     },
     onLoad: function () {
         wx.showLoading({})
         wx.setNavigationBarTitle({
-            title: '网名大全'
+            title: '笑话段子'
         })
         let _classid = [];
         let _expertListi = [];
         wx.request({
-            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/wangming/?getJson=class',
+            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/duanzi/?getJson=class',
             method: 'GET',
             dataType: 'json',
             success: (json) => {

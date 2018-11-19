@@ -27,6 +27,8 @@ swiper{height:160rpx;}
 .node-item:nth-child(7){background: LightSalmon}
 .node-item:nth-child(8){background: Violet}
 .node-item:nth-child(9){background: LightBLue}
+.node-item:nth-child(10){background: LightSalmon}
+.node-item:nth-child(11){background: LightSteelBlue}
 
 .node-title {
     padding-left:30px;
