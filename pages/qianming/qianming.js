@@ -124,7 +124,7 @@ Page({
     onLoad: function () {
         wx.showLoading({})
         wx.setNavigationBarTitle({
-            title: '个性签名大全'
+            title: '个性签名'
         })
         let _classid = [];
         let _expertListi = [];

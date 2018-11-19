@@ -6,6 +6,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+.returnIndexBtn{color:#c00;text-align: center;font-size:30rpx;padding-bottom:30rpx;}
 .navigator-hover{background: none!important;}
 .bgeee{background: #eee;}
 .header {

@@ -126,7 +126,7 @@ Page({
     onLoad: function () {
         wx.showLoading({})
         wx.setNavigationBarTitle({
-            title: '表情大全'
+            title: '斗图表情'
         })
         let _classid = [];
         let _expertListi = [];
