@@ -5,7 +5,7 @@ swiper{height:160rpx;}
 .node-list{
     display: flex;
     flex-flow: wrap;
-    margin:40rpx 0 0rpx 34rpx;
+    margin:40rpx 0 0rpx 30rpx;
 }
 .node-item {
     width: 38%;
@@ -15,7 +15,7 @@ swiper{height:160rpx;}
     padding:30rpx;
     color:#333;
     text-align: center;
-    margin-right: 30rpx;
+    margin-right: 25rpx;
     margin-bottom: 20rpx;
 }
 .node-item:nth-child(2){display:none;}
@@ -49,4 +49,4 @@ swiper{height:160rpx;}
 .articleList .listViews h3{font-size: 36rpx;display:block;padding-bottom:20rpx;}
 .articleList .listViews p{font-size:30rpx;color: #666;}
 
-.footer{font-size:32rpx;padding:30rpx 0;text-align:center;}
+.footer{font-size:32rpx;padding:30rpx 0;text-align:center;background:#666;color:#f8f8f8}
