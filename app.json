@@ -21,6 +21,8 @@
     "pages/duanzi_detail/duanzi_detail",
     "pages/raokouling/raokouling",
     "pages/raokouling_detail/raokouling_detail",
+    "pages/juzi/juzi",
+    "pages/juzi_detail/juzi_detail",
     "pages/node/node",
     "pages/latest/latest",
     "pages/hotest/hotest",
