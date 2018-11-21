@@ -51,7 +51,7 @@ swiper{height:160rpx;}
 }
 .shows{background: #efefef;padding:0rpx 0 30rpx 0;border-top:30rpx solid #fff;}
 .shows .h2s{text-align: center;display: block;padding:30rpx 0;}
-.shows .listViews{flex:1;margin:10rpx;background:#fff;padding:10rpx;border-radius: 10rpx;}
+.shows .listViews{flex:1;margin:9rpx;background:#fff;padding:9rpx;border-radius: 10rpx;}
 .shows .listViews h3{font-size: 32rpx;padding:20rpx;}
 
 .articleList{background: #efefef;border-top:30rpx solid #fff;}

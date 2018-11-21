@@ -119,7 +119,7 @@ Page({
     checkCor: function () {
         wx.showLoading({}),
             this.setData({
-                scrollLeft: this.data._windowWidth / 5 * this.data.currentTab - 100
+                scrollLeft: 100 * this.data.currentTab - 200
             });
     },
     onLoad: function () {

@@ -1,6 +1,6 @@
 .tab-h{
     height: 100rpx;width: 100%; box-sizing: border-box;overflow: hidden;line-height: 100rpx;background: #ffffff; font-size: 36rpx;font-weight: 300; white-space: nowrap;position: fixed;top: 0; left: 0; z-index: 99999;}
-.tab-item{margin:0 36rpx;display: inline-block;}
+.tab-item{margin:0 20rpx;display: inline-block;}
 .tab-item.active{color: #ff4f41;position: relative;}
 .tab-item.active:after{ content: "";display: block;height: 5rpx;width: 60rpx;background: #ff4f41;position: absolute; bottom: 0;left: 5rpx;border-radius: 16rpx;}
 .item-ans{ width: 100%;display: flex; flex-grow: row no-wrap;justify-content: space-between; padding: 30rpx;box-sizing: border-box; height: 180rpx;align-items: center;border-bottom: 1px solid #F2F2F2;}

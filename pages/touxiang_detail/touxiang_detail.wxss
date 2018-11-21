@@ -13,6 +13,6 @@
 .guess{background: #eee;padding-top:40rpx;}
 .guess h2{text-align: center;display: block;padding-bottom:10rpx;}
 .shareButton{margin-top:20rpx;width:100%;}
-.listViews{flex:1;margin:10rpx;background:#fff;padding:10rpx;border-radius: 10rpx;}
+.listViews{flex:1;margin:9rpx;background:#fff;padding:9rpx;border-radius: 10rpx;}
 .listViews h3{font-size: 32rpx;padding:20rpx;}
 .shareArea{text-align: center;padding:30rpx 0;}
