@@ -48,6 +48,7 @@ Page({
         _windowWidth: wx.getSystemInfoSync().windowWidth,
         contentArray: [],
         title:'',
+        id: '',
         ftitle:'',
         newstext:''
     },
@@ -63,7 +64,8 @@ Page({
             success: (json) => {
                 this.setData({
                     title:json.data.result['title'],
-                    ftitle:json.data.result['ftitle']
+                    ftitle:json.data.result['ftitle'],
+                    id: options.id
                 });
                 wx.hideLoading();
             }
