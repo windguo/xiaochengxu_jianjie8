@@ -16,7 +16,7 @@ Page({
             avatarUrl: wx.getStorageSync('storageLoginedavAtarUrl'),
             sessionkey: wx.getStorageSync('storageSessionkey'),
             rnd: wx.getStorageSync('storageRnd'),
-            usernames: wx.getStorageSync('storageLoginedUsername')
+            usernames: wx.getStorageSync('storageLoginedUsernames')
         });
         wx.setNavigationBarTitle({
             title: '发布段子'
@@ -61,7 +61,7 @@ Page({
                 smalltext: e.detail.value.smalltext,
                 title: e.detail.value.smalltext,
                 ecmsfrom: 'xiaochengxu',
-                username: wx.getStorageSync('storageLoginedUsername'),
+                username: wx.getStorageSync('storageLoginedUsernames'),
                 enews: 'MAddInfo',
                 rnd: wx.getStorageSync('storageRnd'),
                 mid: '25',
@@ -73,10 +73,10 @@ Page({
             dataType: 'json',
             success: (json) => {
                 console.log('---===-----json====', json);
-                wx.showToast({
-                    title: json.data.message,
-                    icon: 'success',
-                    duration: 2000,
+                wx.showModal({
+                    content: json.data.message,
+                    showCancel: false,
+                    confirmColor: '#ff5a00',
                     success: function () {
                         wx.redirectTo({
                             url: '../publish_duanzi/publish_duanzi'

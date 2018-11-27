@@ -86,7 +86,7 @@ Page({
         console.log("wx.getStorageSync('storageLogined')", wx.getStorageSync('storageLogined'));
         this.setData({
             logined: wx.getStorageSync('storageLogined'),
-            username: wx.getStorageSync('storageLoginedUsername')
+            username: wx.getStorageSync('storageLoginedUsernames')
         })
         this.fetchData();
         this.getShowListData(this.data.currentTab);

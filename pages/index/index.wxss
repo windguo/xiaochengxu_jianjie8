@@ -61,7 +61,7 @@ swiper{height:160rpx;}
 .articleList .listViews h3{font-size: 36rpx;display:block;padding-bottom:20rpx;}
 .articleList .listViews p{font-size:30rpx;color: #666;}
 
-.memberArea{padding:20rpx 50rpx;line-height:40rpx;margin-top:30rpx;font-size: 32rpx;background: #f9f9f9;color: #282828}
+.memberArea{padding:20rpx 50rpx;line-height:60rpx;margin-top:30rpx;font-size: 36rpx;background: #f9f9f9;color: #282828}
 .memberArea .flex{display: flex;flex-direction: row;justify-content: space-around;align-items: center;}
 .memberArea .flex .self{flex:1}
 .memberArea .navigator{color: #ff5f50;font-size: 30rpx;}

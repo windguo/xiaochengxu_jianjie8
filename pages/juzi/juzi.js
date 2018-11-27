@@ -125,7 +125,7 @@ Page({
         // wx.request({
         //     url: 'http://www.jianjie8.com/e/member/doaction.php',
         //     data: {
-        //         ecmsfrom: 'xiaochengxu',
+        //         clienttype: 'xiaochengxu',
         //         enews: 'testIsLogin'
         //     },
         //     header: {

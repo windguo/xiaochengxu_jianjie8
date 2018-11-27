@@ -17,8 +17,8 @@
     
     <view wx:else>请升级微信版本</view>
 
-    <modal class="modalSkin" hidden="{{hiddenmodalput}}" title="绑定简洁设计网会员系统" confirm-text="提交" cancel-text="取消" bindcancel="cancelM" bindconfirm="confirmM">
+    <modal class="modalSkin" no-cancel="true" hidden="{{hiddenmodalput}}" title="绑定简洁设计网会员系统" confirm-text="点击绑定" cancel-text="" bindcancel="cancelM" bindconfirm="confirmM">
         <input value="" bindinput='username' name="username" type='text' placeholder="请输入用户名" />
-        <input value="" bindinput='password' name="password" type='text' placeholder="请输入密码" />
+        <input value="" bindinput='password' name="password" type='password' placeholder="请输入密码" />
     </modal>
 </view>

@@ -3,7 +3,7 @@
 .show_content{padding:30rpx;border-top: 10rpx solid #eee;}
 .show_content .cont p{display: block;font-size: 40rpx;font-weight: 300;}
 .show_content .cont{line-height: 60rpx;padding:30rpx;}
-.show_content .cont .contes{padding:50rpx 0;color: #555;}
+.show_content .cont .contes{padding:20rpx 0;color: #555;}
 .show_content .wxParse-p{color: #666;padding:30rpx 0;}
 
 .shareArea{text-align: center;padding:30rpx 0;}

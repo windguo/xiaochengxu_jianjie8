@@ -2,5 +2,5 @@
 .header image{height:120rpx;padding-top:30rpx}
 .header .vi{padding-top:10rpx;text-align: center;font-size:36rpx;color: #fff;}
 
-.ulist{margin-top:40rpx;}
-.ulist li{padding:20rpx 0 20rpx 60rpx;background:#fff;line-height: 36px;font-size:36rpx;display: block;margin-bottom:20rpx;}
+.ulist{margin-top:20rpx;}
+.ulist li{padding:10rpx 0;text-indent:60rpx;background:#fff;line-height: 80rpx;font-size:32rpx;display: block;margin-bottom:20rpx;}
