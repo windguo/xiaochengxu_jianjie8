@@ -1,0 +1,28 @@
+<view class="container">
+    <view class="formSubmitCss">
+        <h2>欢迎 {{usernames}}</h2>
+        <form bindsubmit="formSubmit" bindreset="formReset">
+            <picker bindchange="bindPickerChange" value="{{objectArray[index].classid}}" name="classid" range-key="classname" range="{{objectArray}}">
+                <view style="display: flex;">
+                    <span class="h3Style">选择分类：</span>
+                    <view class="picker">
+                        {{objectArray[index].classname}}
+                    </view>
+                </view>
+            </picker>
+            <view class="section">
+                <textarea bindblur="bindTextAreaBlur" maxlength="-1" auto-focus name="smalltext" placeholder="请输入内容" />
+                <input hidden="true" maxlength="-1" name="title" value="{{contents}}" />
+                <input hidden="true" name="enews" value="MAddInfo" />
+                <input hidden="true" maxlength="-1" name="sessionkey" value="{{sessionkey}}" />
+                <input hidden="true" name="ecmsfrom" value="xiaochengxu" />
+                <input hidden="true" name="mid" value="25" />
+                <input hidden="true" maxlength="-1" name="rnd" value="{{rnd}}" />
+                <input hidden="true" name="classid" value="{{objectArray[index].classid}}" />
+            </view>
+            <view class="btn_area">
+                <button name="addnews" type="warn" formType="submit">立即发布句子</button>
+            </view>
+        </form>
+    </view>
+</view>

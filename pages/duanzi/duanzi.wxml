@@ -13,6 +13,7 @@
               <navigator url="../duanzi_detail/duanzi_detail?classid={{item.classid}}&id={{item.id}}" hover-class="navigator-hover">
                 <h3>{{item.smalltext}}</h3>
               </navigator>
+              <!-- <p>{{item.username}}</p> -->
             </view>
         </view>
       </scroll-view>

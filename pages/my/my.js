@@ -1,45 +1,19 @@
-//index.js
-//获取应用实例
-const app = getApp()
-
+var app = getApp();
 Page({
     data: {
-        userInfo: {},
-        hasUserInfo: false,
-        canIUse: wx.canIUse('button.open-type.getUserInfo')
+        username:'',
+        avatarUrl:'',
+        usernames:''
     },
     onLoad: function () {
-        if (app.globalData.userInfo) {
-            this.setData({
-                userInfo: app.globalData.userInfo,
-                hasUserInfo: true
-            })
-        } else if (this.data.canIUse) {
-            app.userInfoReadyCallback = res => {
-                this.setData({
-                    userInfo: res.userInfo,
-                    hasUserInfo: true
-                })
-            }
-        } else {
-            // 在没有 open-type=getUserInfo 版本的兼容处理
-            wx.getUserInfo({
-                success: res => {
-                    app.globalData.userInfo = res.userInfo
-                    this.setData({
-                        userInfo: res.userInfo,
-                        hasUserInfo: true
-                    })
-                }
-            })
-        }
-    },
-    getUserInfo: function (e) {
-        console.log(e)
-        app.globalData.userInfo = e.detail.userInfo
+        console.log('app.globalData.usernameapp.globalData.username==', app.globalData.username);
         this.setData({
-            userInfo: e.detail.userInfo,
-            hasUserInfo: true
+            username: wx.getStorageSync('storageLoginedNickName'),
+            avatarUrl: wx.getStorageSync('storageLoginedavAtarUrl'),
+            usernames: wx.getStorageSync('storageLoginedUsernames')
+        })
+        wx.setNavigationBarTitle({
+            title: '会员中心'
         })
     }
 })

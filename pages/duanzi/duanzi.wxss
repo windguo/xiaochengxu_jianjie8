@@ -14,5 +14,5 @@
 .scoll-h{height: 100%;}
 .shareButton{margin-top:20rpx;width:100%;}
 .listViews{margin:30rpx;background:#fff;padding:40rpx;border-radius: 20rpx;}
-.listViews h3{font-size: 36rpx;display:block;padding-bottom:20rpx;font-weight: 300;}
+.listViews h3{font-size: 36rpx;display:block;padding-bottom:20rpx;font-weight: 300;line-height: 60rpx;}
 .listViews p{font-size:30rpx;color: #666;}

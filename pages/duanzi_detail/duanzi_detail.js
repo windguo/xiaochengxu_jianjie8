@@ -1,6 +1,6 @@
 // latest.js
 var Api = require('../../utils/api.js');
-
+var WxParse = require('../../wxParse/wxParse.js')
 
 var app = getApp();
 Page({
@@ -51,6 +51,7 @@ Page({
         contentArray: [],
         title:'',
         smalltext:'',
+        avatarUrl:'',
         id:'',
         newstext:''
     },
@@ -58,12 +59,19 @@ Page({
         wx.showLoading({})
         wx.setNavigationBarTitle({
             title: '段子详情页'
+        });
+        this.setData({
+            username: wx.getStorageSync('storageLoginedNickName'),
+            avatarUrl: wx.getStorageSync('storageLoginedavAtarUrl'),
+            usernames: wx.getStorageSync('storageLoginedUsernames')
         })
         wx.request({
             url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/duanzi/?getJson=content&id=' + options.id,
             method: 'GET',
             dataType: 'json',
             success: (json) => {
+                var that = this;
+                WxParse.wxParse('article', 'html', json.data.result['smalltext'], that, 5);
                 this.setData({
                     title: json.data.result['title'],
                     smalltext: json.data.result['smalltext'],
@@ -103,7 +111,7 @@ Page({
                             classid: json.data.result[index].classid,
                             id: json.data.result[index].id,
                             title: json.data.result[index].title,
-                            smalltext: json.data.result[index].smalltext
+                            smalltext: json.data.result[index].smalltext.replace(/<[^<>]+>/g, '')
                         });
                     };
                     _arr = _arr.concat(_newArr);
@@ -118,7 +126,7 @@ Page({
                             classid: json.data.result[index].classid,
                             id: json.data.result[index].id,
                             title: json.data.result[index].title,
-                            smalltext: json.data.result[index].smalltext
+                            smalltext: json.data.result[index].smalltext.replace(/<[^<>]+>/g, '')
                         });
                     };
                     console.log('===', _newArr);

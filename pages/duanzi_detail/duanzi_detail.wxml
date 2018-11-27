@@ -1,8 +1,19 @@
+<import src="../../wxParse/wxParse.wxml" />
+
 <view class="container">
   <view class="show_content">
-    <navigator url="../index/index" hover-class="navigator-hover" class="returnIndexBtn">返回首页</navigator>
+    <view class="linkTo">
+      <navigator url="../index/index" hover-class="navigator-hover" class="linka">返回首页</navigator>
+      <navigator url="../publish_duanzi/publish_duanzi" class="linkb" hover-class="navigator-hover">发布段子</navigator>
+    </view>
     <view class="cont">
-      <p bindtap="copyTBL" data-text="{{smalltext}}">{{smalltext}}</p>
+      <view class="contes">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+      </view>
+      <view class="authorView">
+        <image class="self" src="{{avatarUrl}}" mode="aspectFit"></image>
+        <view class="name">{{usernames}}</view>
+      </view>
       <view class="shareArea">
         <button open-type="share" size='default' type="warn">分享给好友</button>
       </view>

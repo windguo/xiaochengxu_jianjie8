@@ -1,7 +1,10 @@
 
 <view class="container">
   <view class="show_content">
-    <navigator url="../index/index" hover-class="navigator-hover" class="returnIndexBtn">返回首页</navigator>
+    <view class="linkTo">
+      <navigator url="../index/index" hover-class="navigator-hover" class="linka">返回首页</navigator>
+      <navigator url="../publish_juzi/publish_juzi" class="linkb" hover-class="navigator-hover">发布句子</navigator>
+    </view>
     <view class="cont">
       <p bindtap="copyTBL" data-text="{{smalltext}}">{{smalltext}}</p>
       <view class="shareArea">

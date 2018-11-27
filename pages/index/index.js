@@ -1,6 +1,8 @@
 // latest.js
 var Api = require('../../utils/api.js');
 
+const app = getApp();
+
 Page({
     onShareAppMessage: function (res) {
         if (res.from === 'button') {
@@ -44,6 +46,10 @@ Page({
         hidden: false,
         interval: 5000,
         duration: 500,
+        logined: false,
+        username: '',
+        userid: '',
+        token: '',
         autoplay: true,
         contentArray:[],
         contentMeiwenArray:[],
@@ -76,7 +82,12 @@ Page({
         })
     },
     onLoad: function () {
-        wx.showLoading({})
+        wx.showLoading({});
+        console.log("wx.getStorageSync('storageLogined')", wx.getStorageSync('storageLogined'));
+        this.setData({
+            logined: wx.getStorageSync('storageLogined'),
+            username: wx.getStorageSync('storageLoginedUsername')
+        })
         this.fetchData();
         this.getShowListData(this.data.currentTab);
         this.getMeituListData(this.data.currentTab);
@@ -86,6 +97,19 @@ Page({
         this.gettouxiangListData(this.data.currentTab);
         this.getbiaoqingListData(this.data.currentTab);
         this.getqianmingListData(this.data.currentTab);
+    },
+    login:function(){
+        if (app.globalData.logined){
+            console.log('存在登陆态啊');
+            wx.navigateTo({
+                url: '../my/my'
+            });
+        }else{
+            console.log('不存在登陆态');
+            wx.navigateTo({
+                url: '../login/login'
+            });
+        }
     },
     getShowListData: function (classid, more) {
         let that = this;

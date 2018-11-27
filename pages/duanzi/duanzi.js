@@ -45,6 +45,7 @@ Page({
         scrollLeft: 0, //tab标题的滚动条位置
         expertListi: [],
         expertList: [],
+        username:'',
         expertListId: [],
         _windowWidth: wx.getSystemInfoSync().windowWidth,
         contentArray: []
@@ -65,8 +66,9 @@ Page({
                         _newArr.push({
                             classid: json.data.result[index].classid,
                             id: json.data.result[index].id,
-                            smalltext: json.data.result[index].smalltext,
-                            title: json.data.result[index].title
+                            smalltext: json.data.result[index].smalltext.replace(/<[^<>]+>/g, ''),
+                            title: json.data.result[index].title,
+                            username: json.data.result[index].username
                         });
                     };
                     _arr = _arr.concat(_newArr);
@@ -79,8 +81,9 @@ Page({
                         _newArr.push({
                             classid: json.data.result[index].classid,
                             id: json.data.result[index].id,
-                            smalltext: json.data.result[index].smalltext,
-                            title: json.data.result[index].title
+                            smalltext: json.data.result[index].smalltext.replace(/<[^<>]+>/g, ''),
+                            title: json.data.result[index].title,
+                            username: json.data.result[index].username
                         });
                     };
                     console.log('===', _newArr);
@@ -122,6 +125,9 @@ Page({
             });
     },
     onLoad: function () {
+        this.setData({
+            username: app.globalData.username
+        })
         wx.showLoading({})
         wx.setNavigationBarTitle({
             title: '笑话段子'

@@ -122,6 +122,24 @@ Page({
             });
     },
     onLoad: function () {
+        // wx.request({
+        //     url: 'http://www.jianjie8.com/e/member/doaction.php',
+        //     data: {
+        //         ecmsfrom: 'xiaochengxu',
+        //         enews: 'testIsLogin'
+        //     },
+        //     header: {
+        //         'content-type': 'application/x-www-form-urlencoded',
+        //         'userid': app.globalData.userid,
+        //         'token': app.globalData.token
+        //     },
+        //     method: 'POST',
+        //     dataType: 'json',
+        //     success: (json) => {
+        //         console.log('jsonjsonjson----login', json);
+        //     }
+        // })
+
         wx.showLoading({})
         wx.setNavigationBarTitle({
             title: '经典语句'

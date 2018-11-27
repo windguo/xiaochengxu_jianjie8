@@ -28,6 +28,17 @@
       </view>
     </swiper-item>
   </swiper>
+  <view class="memberArea">
+    <view wx:if="{{logined}}" class="flex">
+      <view class="self"><span class="grey">欢迎:</span>{{username}}</view>
+      <navigator class="navigator" url="../my/my" hover-class="navigator-hover">
+      个人中心
+    </navigator>
+    </view>
+    <view bindtap="login" wx:else>
+      <button type="primary">微信授权登录</button>
+    </view>
+  </view>
   <view class="node-list">
     <block wx:for="{{nodes}}">
       <navigator class="node-item" url="../{{item.classpath}}/{{item.classpath}}" hover-class="navigator-hover">

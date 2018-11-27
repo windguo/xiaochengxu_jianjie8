@@ -23,7 +23,12 @@
     "pages/raokouling_detail/raokouling_detail",
     "pages/juzi/juzi",
     "pages/juzi_detail/juzi_detail",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/login/login",
+    "pages/loginout/loginout",
+    "pages/publish_duanzi/publish_duanzi",
+    "pages/publish_juzi/publish_juzi"
+    
   ],
   "window":{
     "backgroundTextStyle":"light",
