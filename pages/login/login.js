@@ -9,9 +9,9 @@ Page({
         canIUse: wx.canIUse('button.open-type.getUserInfo')
     },
     cancelM: function (e) {
-        this.setData({
-            hiddenmodalput: true,
-        })
+        // this.setData({
+        //     hiddenmodalput: true,
+        // })
     },
     confirmM: function (e) {
         console.log("姓名：" + this.data.username + "密码：" + this.data.password);
