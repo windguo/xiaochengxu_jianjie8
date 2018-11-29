@@ -18,6 +18,12 @@ Page({
             rnd: wx.getStorageSync('storageRnd'),
             usernames: wx.getStorageSync('storageLoginedUsernames')
         });
+        console.log('usernamesusernames--==--', this.data.usernames);
+        if (!this.data.usernames){
+            wx.redirectTo({
+                url: '../login/login'
+            });
+        };
         wx.setNavigationBarTitle({
             title: '发布段子'
         });

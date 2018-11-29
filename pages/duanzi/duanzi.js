@@ -50,7 +50,6 @@ Page({
         _windowWidth: wx.getSystemInfoSync().windowWidth,
         contentArray: []
     },
-
     getListData: function (classid, more) {
         let that = this;
         let _arr = this.data.contentArray;
@@ -124,7 +123,8 @@ Page({
                 scrollLeft: 100 * this.data.currentTab - 200
             });
     },
-    onLoad: function () {
+    onLoad: function (options) {
+        console.log('onload000----====---',options);
         this.setData({
             username: app.globalData.username
         })

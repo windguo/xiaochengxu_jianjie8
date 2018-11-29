@@ -1,5 +1,16 @@
 <!--node.wxml-->
 <view class="container">
+  <view class="memberArea">
+    <view wx:if="{{logined}}" class="flex">
+      <view class="self"><span class="grey">欢迎:</span>{{username}}</view>
+      <navigator class="navigator" url="../my/my" hover-class="navigator-hover">
+        个人中心
+      </navigator>
+    </view>
+    <view bindtap="login" wx:else>
+      <button type="default">点击登录,享受更多福利</button>
+    </view>
+  </view>
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
     <swiper-item>
       <view class="swiper_item" style="background:#FF1493;color:#ffff00;">
@@ -28,17 +39,6 @@
       </view>
     </swiper-item>
   </swiper>
-  <view class="memberArea">
-    <view wx:if="{{logined}}" class="flex">
-      <view class="self"><span class="grey">欢迎:</span>{{username}}</view>
-      <navigator class="navigator" url="../my/my" hover-class="navigator-hover">
-      个人中心
-    </navigator>
-    </view>
-    <view bindtap="login" wx:else>
-      <button type="primary">微信授权登录</button>
-    </view>
-  </view>
   <view class="node-list">
     <block wx:for="{{nodes}}">
       <navigator class="node-item" url="../{{item.classpath}}/{{item.classpath}}" hover-class="navigator-hover">
@@ -46,6 +46,7 @@
       </navigator>
     </block>
   </view>
+  <view style="font-size:32rpx;padding:30rpx 0;text-align:center;background:#fffff0;margin-top:30rpx;">客服QQ或微信:275333(备注:小程序)</view>
   <view class="shows">
     <h2>
       <navigator class="h2s" url="../show/show" hover-class="navigator-hover">

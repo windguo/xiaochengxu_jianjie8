@@ -1,4 +1,4 @@
-.header {background-color: #FF1493;background-image: -webkit-linear-gradient(top,#FF1493,#ff5f50);display: block;height:260rpx;}
+.header {background-color: #FF1493;background-image: -webkit-linear-gradient(top,#ed5935,#FF1493);display: block;height:260rpx;}
 .header image{height:120rpx;padding-top:30rpx}
 .header .vi{padding-top:10rpx;text-align: center;font-size:36rpx;color: #fff;}
 

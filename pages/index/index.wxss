@@ -1,6 +1,5 @@
 swiper{height:160rpx;}
 .swiper_item{text-align:center;font-size:50rpx;line-height:160rpx;height:160rpx;}
-
 .navigator-hover{background: #f9f9f9!important;}
 .node-list{
     display: flex;
@@ -61,7 +60,7 @@ swiper{height:160rpx;}
 .articleList .listViews h3{font-size: 36rpx;display:block;padding-bottom:20rpx;}
 .articleList .listViews p{font-size:30rpx;color: #666;}
 
-.memberArea{padding:20rpx 50rpx;line-height:60rpx;margin-top:30rpx;font-size: 36rpx;background: #f9f9f9;color: #282828}
+.memberArea{padding:30rpx 50rpx;line-height:60rpx;font-size: 36rpx;background: #f9f9f9;background:#efefef;color: #282828}
 .memberArea .flex{display: flex;flex-direction: row;justify-content: space-around;align-items: center;}
 .memberArea .flex .self{flex:1}
 .memberArea .navigator{color: #ff5f50;font-size: 30rpx;}

@@ -32,9 +32,9 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#ed5935",
     "navigationBarTitleText": "简洁设计网",
-    "navigationBarTextStyle":"black",
+    "navigationBarTextStyle":"light",
     "enablePullDownRefresh":true
   },
   "navigateToMiniProgramAppIdList": [

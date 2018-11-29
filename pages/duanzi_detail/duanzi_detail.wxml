@@ -1,23 +1,21 @@
 <import src="../../wxParse/wxParse.wxml" />
-
+<!--<image src="{{qrodeImg}}" style="width:400rpx;height:400rpx;" mode="aspectFit"></image>-->
 <view class="container">
   <view class="show_content">
     <view class="linkTo">
       <navigator url="../index/index" hover-class="navigator-hover" class="linka">返回首页</navigator>
-      <navigator url="../publish_duanzi/publish_duanzi" class="linkb" hover-class="navigator-hover">发布段子</navigator>
     </view>
     <view class="cont">
       <view class="contes">
         <template is="wxParse" data="{{wxParseData:article.nodes}}" />
       </view>
-      <view class="authorView">
-        <image class="self" src="{{avatarUrl}}" mode="aspectFit"></image>
-        <view class="name">{{usernames}}</view>
-      </view>
       <view class="shareArea">
-        <button open-type="share" size='default' type="warn">分享给好友</button>
+        <button bindtap="creat" type="primary" size='default'>生成海报,长按图片分享收藏</button>
       </view>
     </view>
+  </view>
+  <view style="height:0rpx;overflow:hidden;">
+    <canvas canvas-id="shareCanvas" class="canvas" />
   </view>
   <view class="guess">
     <h2>猜你喜欢</h2>

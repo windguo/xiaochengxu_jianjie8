@@ -1,6 +1,8 @@
 <view class="container">
   <view class="show_content">
-    <navigator url="../index/index" hover-class="navigator-hover" class="returnIndexBtn">返回首页</navigator>
+    <view class="linkTo">
+      <navigator url="../index/index" hover-class="navigator-hover" class="linka">返回首页</navigator>
+    </view>
     <view class="cont">
       <view bindtap="copyTBL" data-text="{{title}}" style="margin-bottom:20rpx;">{{title}}</view>
       <view bindtap="copyTBL" data-text="{{ftitle}}">{{ftitle}}</view>

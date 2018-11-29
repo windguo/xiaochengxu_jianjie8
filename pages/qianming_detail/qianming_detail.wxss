@@ -1,5 +1,5 @@
-.show_content{padding:60rpx 30rpx;border-top: 10rpx solid #eee;text-align: center}
-
+.show_content{padding:50rpx 30rpx;border-top: 10rpx solid #eee;text-align: center}
+.show_content .cont{padding-top:50rpx;}
 .guess{background: #eee;padding-top:40rpx;}
 .guess h2{text-align: center;display: block;padding-bottom:10rpx;}
 .shareArea{text-align: center;padding:30rpx 0;}

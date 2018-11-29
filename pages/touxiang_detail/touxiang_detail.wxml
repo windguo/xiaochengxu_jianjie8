@@ -3,7 +3,9 @@
 
 <view class="container">
   <view class="show_content">
-    <navigator url="../index/index" hover-class="navigator-hover" class="returnIndexBtn">返回首页</navigator>
+    <view class="linkTo">
+      <navigator url="../index/index" hover-class="navigator-hover" class="linka">返回首页</navigator>
+    </view>
     <h1>{{title}}</h1>
     <view class="cont">
       <template is="wxParse" data="{{wxParseData:titlepics.nodes}}" />

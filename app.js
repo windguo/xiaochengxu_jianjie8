@@ -10,8 +10,10 @@ App({
     avatarUrl: '',
     logined: false,
     sessionkey:'',
+    access_token:'',
     userid:null
   },
   onLaunch: function () {
+    
   }
 })

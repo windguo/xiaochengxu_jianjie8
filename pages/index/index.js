@@ -81,8 +81,18 @@ Page({
             }
         })
     },
-    onLoad: function () {
+    onLoad: function (options) {
         wx.showLoading({});
+        const _scene = options.scene;
+        // const _scene = decodeURIComponent(options.scene);
+        console.log('_scene_scene', options);
+        if (Boolean(options.scene) == true) {
+            console.log('../duanzi_detail/duanzi_detail?id=' + _scene);
+            wx.navigateTo({
+                url: '../duanzi_detail/duanzi_detail?id=' + _scene
+            });
+            return false;
+        }
         console.log("wx.getStorageSync('storageLogined')", wx.getStorageSync('storageLogined'));
         this.setData({
             logined: wx.getStorageSync('storageLogined'),
