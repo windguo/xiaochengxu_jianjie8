@@ -4,7 +4,7 @@ swiper{height:160rpx;}
 .node-list{
     display: flex;
     flex-flow: wrap;
-    margin:40rpx 0 0rpx 30rpx;
+    margin:60rpx 0 30rpx 35rpx;
 }
 .node-item {
     width: 38%;
@@ -15,7 +15,7 @@ swiper{height:160rpx;}
     color:#333;
     text-align: center;
     margin-right: 25rpx;
-    margin-bottom: 20rpx;
+    margin-bottom: 40rpx;
 }
 .node-item:nth-child(2){display:none;}
 .node-item:nth-child(1){background: Turquoise}

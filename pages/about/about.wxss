@@ -1,0 +1,5 @@
+.header {background-color: #fff;display: block;text-align: center;padding-top:20rpx;border-bottom:0rpx;}
+.header image{width:120rpx; height:120rpx;padding-top:30rpx}
+.header .vi{padding-top:20rpx;font-size:36rpx;line-height: 50rpx;}
+.header .vi .info{margin:50rpx;color:#999;text-align: left}
+.header .vi h3{color: #666;display: block;text-align: left;margin:0 50rpx 30rpx 50rpx;}

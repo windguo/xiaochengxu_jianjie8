@@ -1,0 +1,15 @@
+<view class="container">
+    <view class='header'>
+        <image src="../../images/f_logo.jpeg" mode="aspectFit"></image>
+        <view class="vi">
+            <h2>简洁设计网</h2>
+            <view class="info">
+                简洁设计网成立于2005年,目前是一个经典美文,说说大全,图片大全,唯美图片,美女图片,网名大全,爱情美文,优美的文字,女生网名,男生网名,情侣网名,情侣签名,男生头像,女生头像,斗图表情,个性签名等资源平台。
+            </view>
+            <h3>微信公众号：简洁设计网</h3>
+            <h3>微信客服：275333(验证：简洁设计网)</h3>
+            <h3>网址：http://www.jianjie8.com/</h3>
+            <h3>邮箱：webmaster@jianjie8.com</h3>
+        </view>
+    </view>
+</view>

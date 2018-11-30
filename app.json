@@ -2,6 +2,7 @@
   "pages":[
     "pages/index/index",
     "pages/show/show",
+    "pages/about/about",
     "pages/show_detail/show_detail",
     "pages/meiwen/meiwen",
     "pages/meiwen_detail/meiwen_detail",
@@ -36,6 +37,24 @@
     "navigationBarTitleText": "简洁设计网",
     "navigationBarTextStyle":"light",
     "enablePullDownRefresh":true
+  },
+  "tabBar": {
+    "selectedColor": "#d81e06",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/images/ic_home.png",
+        "selectedIconPath": "/images/ic_home_active.png",
+        "text": "简洁首页"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "iconPath": "/images/ic_name.png",
+        "selectedIconPath": "/images/ic_name_active.png",
+        "text": "关于我们"
+      }
+    ]
   },
   "navigateToMiniProgramAppIdList": [
     "wx711d9992cb89aa05",
