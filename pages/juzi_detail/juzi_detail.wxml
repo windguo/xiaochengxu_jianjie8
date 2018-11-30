@@ -16,7 +16,7 @@
     <h2>猜你喜欢</h2>
     <view class="layout_vertical">
       <view wx:for="{{contentArray}}" class="listViews" wx:for-index="i" wx:for-item="item" data-text="{{item.title}}">
-        <navigator url="../raokouling_detail/raokouling_detail?classid={{item.classid}}&id={{item.id}}" hover-class="navigator-hover">
+        <navigator url="../juzi_detail/juzi_detail?classid={{item.classid}}&id={{item.id}}" hover-class="navigator-hover">
           <h3>{{item.smalltext}}</h3>
         </navigator>
       </view>

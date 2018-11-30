@@ -121,12 +121,11 @@ Page({
             }
         })
     },
-    getListData: function (classid, more,pageSize) {
+    getListData: function (classid, more) {
         let that = this;
         let _arr = this.data.contentArray;
-        let _pageSize = pageSize ? pageSize : 20;
         wx.request({
-            url: getApp().globalData.apiUrl + '/xiaochengxu/duanzi/?getJson=column&pageSize=' + _pageSize +'&classid=' + classid,
+            url: getApp().globalData.apiUrl + '/xiaochengxu/duanzi/?getJson=column&classid=' + classid,
             method: 'GET',
             dataType: 'json',
             success: (json) => {
