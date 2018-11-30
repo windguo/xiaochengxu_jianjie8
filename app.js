@@ -3,6 +3,7 @@ const app = getApp();
 
 App({
   globalData:{
+    apiUrl:'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api',
     token:null,
     rnd: '',
     username: '',

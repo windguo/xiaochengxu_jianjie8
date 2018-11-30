@@ -55,25 +55,29 @@ Page({
         id:'',
         qrodeImg:'',
         width:'',
+        classid:'',
         height:'',
         height:'',
         shareTempFilePath:'',
         tempFilePath:'',
+        _id:'',
         newstext:''
     },
     onLoad: function (options) {
         wx.showLoading({})
+        console.log('---==--options--', options);
         wx.setNavigationBarTitle({
             title: '段子详情页'
         });
         this.setData({
             username: wx.getStorageSync('storageLoginedNickName'),
             avatarUrl: wx.getStorageSync('storageLoginedavAtarUrl'),
-            id:options.id,
+            classid:options.classid,
+            id: options.id.replace(/[^0-9]/ig, ""),
             usernames: wx.getStorageSync('storageLoginedUsernames')
         })
         wx.request({
-            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/duanzi/?getJson=content&id=' + options.id,
+            url: getApp().globalData.apiUrl + '/xiaochengxu/duanzi/?getJson=content&id=' + this.data.id,
             method: 'GET',
             dataType: 'json',
             success: (json) => {
@@ -83,7 +87,7 @@ Page({
                 this.setData({
                     title: json.data.result['title'],
                     smalltext: json.data.result['smalltext'],
-                    id: options.id
+                    id: this.data.id
                 });
                 wx.hideLoading();
             }
@@ -101,17 +105,32 @@ Page({
                 });
             }
         });
-        this.getListData(this.data.currentTab);
+        console.log('this.data.classid--', this.data.classid);
+        this.getListData(this.data.classid);
     },
-    getListData: function (classid, more) {
+    randOne:function(){
         let that = this;
-        let _arr = this.data.contentArray;
         wx.request({
-            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/duanzi/?getJson=column&classid=' + classid,
+            url: getApp().globalData.apiUrl + '/xiaochengxu/duanzi/?getJson=column&pageSize=1&classid=' + that.data.classid,
             method: 'GET',
             dataType: 'json',
             success: (json) => {
-                console.log('json.data.result---', json);
+                wx.redirectTo({
+                    url: '../duanzi_detail/duanzi_detail?classid=' + that.data.classid + '&id=' + json.data.result[0].id
+                });
+            }
+        })
+    },
+    getListData: function (classid, more,pageSize) {
+        let that = this;
+        let _arr = this.data.contentArray;
+        let _pageSize = pageSize ? pageSize : 20;
+        wx.request({
+            url: getApp().globalData.apiUrl + '/xiaochengxu/duanzi/?getJson=column&pageSize=' + _pageSize +'&classid=' + classid,
+            method: 'GET',
+            dataType: 'json',
+            success: (json) => {
+                console.log('json.data.result--column-', json.data);
                 if (more) {
                     let _newArr = [];
                     for (let index = 0; index < json.data.result.length; index++) {
@@ -127,7 +146,6 @@ Page({
                         contentArray: _arr
                     });
                 } else {
-
                     let _newArr = [];
                     for (let index = 0; index < json.data.result.length; index++) {
                         _newArr.push({
@@ -188,7 +206,7 @@ Page({
     creat: function () {
         let that = this;
         wx.getImageInfo({
-            src: 'https://www.yishuzi.com.cn/e/api/jianjie8_xiaochengxu/qrode.php?path=' + encodeURIComponent("pages/duanzi_detail/duanzi_detail") + '&scene=' + this.data.id + '&width=200&channel=duanzi',
+            src: 'https://www.yishuzi.com.cn/e/api/jianjie8_xiaochengxu/qrode.php?path=' + encodeURIComponent("pages/duanzi_detail/duanzi_detail") + '&scene=classid-' + this.data.classid +'_duanziid-' + this.data.id + '&width=100',
             success: function (res) {
                 console.log('that.data', res);
                 that.setData({
@@ -231,7 +249,6 @@ Page({
                             that.setData({
                                 shareTempFilePath: res.tempFilePath
                             });
-                            // that.saveImageToPhotosAlbum();
                             // 预览图片
                             that.previewImage(that.data.shareTempFilePath);
                         }
@@ -239,6 +256,10 @@ Page({
                 }, 100))
             }
         })
+    },
+    scrolltolowerLoadData: function (e) {
+        console.log('scrolltolowerLoadData', e);
+        this.getListData(this.data.classid, true);
     },
     previewImage: function (e) {
         console.log('eee', e);
@@ -253,7 +274,7 @@ Page({
         if (!this.data.shareTempFilePath) {
             wx.showModal({
                 title: '提示',
-                content: '图片绘制中，请稍后重试',
+                content: '请先点击生成段子海报',
                 showCancel: false
             })
         }
