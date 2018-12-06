@@ -16,5 +16,6 @@
 .listViews p{font-size:30rpx;color: #666;}
 
 .canvas{
-  height:500px;
+  width: 400px;
+  height:800px;
 }
