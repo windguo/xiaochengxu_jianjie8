@@ -38,24 +38,6 @@
     "navigationBarTextStyle":"light",
     "enablePullDownRefresh":true
   },
-  "tabBar": {
-    "selectedColor": "#d81e06",
-    "backgroundColor": "#fff",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "iconPath": "/images/ic_home.png",
-        "selectedIconPath": "/images/ic_home_active.png",
-        "text": "简洁首页"
-      },
-      {
-        "pagePath": "pages/about/about",
-        "iconPath": "/images/ic_name.png",
-        "selectedIconPath": "/images/ic_name_active.png",
-        "text": "关于我们"
-      }
-    ]
-  },
   "navigateToMiniProgramAppIdList": [
     "wx711d9992cb89aa05",
     "wxb2e976cef0f6facb",

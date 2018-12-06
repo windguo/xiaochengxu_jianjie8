@@ -46,4 +46,5 @@
       </navigator>
     </block>
   </view>
+  <view style="font-size:32rpx;padding-bottom:40rpx;text-align:center;">客服QQ或微信:275333(备注:小程序)</view>
 </view>
