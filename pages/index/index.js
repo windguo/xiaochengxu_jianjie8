@@ -85,20 +85,22 @@ Page({
         wx.showLoading({});
         // 扫码进入的判断开始
         const _scene = options.scene;
-        // console.log('_scene_scene', _scene);
+        console.log('_scene_scene', _scene);
         if (Boolean(_scene) == true){
-            // const _scene = decodeURIComponent(options.scene);
-            let _ar = _scene.split('_');
-            let _classid = _ar[0].split('-');
-            let _id = _ar[1].split('-');
-            let _channel = _id[0];
             switch (_channel) {
                 case 'duanziid':
+                    let _ar = _scene.split('_');
+                    let _classid = _ar[0].split('-');
+                    let _id = _ar[1].split('-');
+                    let _channel = _id[0];
                     wx.navigateTo({
                         url: '../duanzi_detail/duanzi_detail?classid=' + _classid[1] +'&id=' + _id[1]
                     });
                     break;
                 default:
+                    wx.navigateTo({
+                        url: '../' + _scene + '/' + _scene
+                    });    
                     break;
             };
         };
