@@ -36,10 +36,10 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 0,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "首页",
 					"pathName": "pages/index/index",
 					"query": ""

@@ -83,6 +83,9 @@ Page({
     },
     onLoad: function (options) {
         wx.showLoading({});
+				wx.navigateTo({
+					url: '/pages/duanzi/duanzi'
+				})
         // 扫码进入的判断开始
       const _scene = options.scene;
       console.log('_scene_scene', _scene);
