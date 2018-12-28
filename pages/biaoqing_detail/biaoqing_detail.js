@@ -68,10 +68,10 @@ Page({
             dataType: 'json',
             success: (json) => {
                 var that = this;
-                WxParse.wxParse('article', 'html', '<img src="' + json.data.result['titlepic'] + '" />', that, 5);
+              WxParse.wxParse('article', 'html', '<img src="https://www.yishuzi.com.cn/allStaticFiles' + json.data.result['titlepic'].substring(30) + '" />', that, 5);
                 this.setData({
                     title: json.data.result['title'],
-                    titlepic: json.data.result['titlepic'],
+                  titlepic: 'https://www.yishuzi.com.cn/allStaticFiles' + json.data.result['titlepic'].substring(30),
                     id: options.id
                 });
                 wx.hideLoading();

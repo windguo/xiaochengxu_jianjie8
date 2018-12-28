@@ -130,7 +130,7 @@ Page({
         })
         wx.showLoading({})
         wx.setNavigationBarTitle({
-            title: '笑话段子'
+            title: '爱爆笑'
         })
         let _classid = [];
         let _expertListi = [];

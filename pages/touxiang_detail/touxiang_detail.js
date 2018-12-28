@@ -69,11 +69,11 @@ Page({
             success: (json) => {
                 console.log('contentjson',json);
                 var that = this;
-                WxParse.wxParse('titlepics', 'html', '<img src="' + json.data.result['titlepic'] +'" />', that, 5);
+              WxParse.wxParse('titlepics', 'html', '<img src="https://www.yishuzi.com.cn/allStaticFiles' + json.data.result['titlepic'].substring(30) +'" />', that, 5);
                 WxParse.wxParse('article', 'html', json.data.result['newstext'], that, 5);
                 this.setData({
                     title: json.data.result['title'],
-                    titlepic: json.data.result['titlepic'],
+                  titlepic: 'https://www.yishuzi.com.cn/allStaticFiles' + json.data.result['titlepic'].substring(30),
                     id: options.id
                 });
                 wx.hideLoading();
