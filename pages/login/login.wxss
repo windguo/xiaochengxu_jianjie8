@@ -9,19 +9,14 @@
 
 
 .header {
-    background: #ff4447;
-    margin: 90rpx 50rpx;
-    border-bottom: 1px solid #ccc;
-    text-align: center;
-    width: 650rpx;
-    height: 300rpx;
-    line-height: 450rpx;
-    border-radius: 30rpx;
+    background: none;
+    height:300rpx;
+    margin-bottom:50rpx;
 }
  
 .header image {
-    width: 280rpx;
-    height: 90rpx;
+    width: 150rpx;
+    height: 150rpx;
 }
  
 .content {

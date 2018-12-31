@@ -232,7 +232,8 @@ Page({
                 ctx.stroke() //绘制已定义的路径
                 ctx.setFontSize(16);
                 ctx.fillStyle = "#ed5935";
-                ctx.fillText('识别小程序码,开启更多爆笑段子', 90, 550)
+                ctx.fillText('识别二维码微信搜索“爱爆笑”,开启爆笑模式', 50, 550)
+
                 
                 ctx.drawImage(that.data.tempFilePath, 140, 585, 120, 120);
 
