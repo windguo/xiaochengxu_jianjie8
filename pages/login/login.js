@@ -38,7 +38,7 @@ Page({
                             wx.setStorageSync('storageRnd', res.data.result.rnd);
                             wx.setStorageSync('storageLoginedavAtarUrl', _res.userInfo.avatarUrl);
                             wx.navigateTo({
-                                url: '../duanzi/duanzi'
+                                url: '../index/index'
                             });
                         },
                         fail: function () {
@@ -74,7 +74,7 @@ Page({
                                     wx.setStorageSync('storageSessionkey', res.data.sessionkey);
                                     wx.setStorageSync('storageRnd', res.data.rnd);
                                     wx.navigateTo({
-                                        url: '../duanzi/duanzi'
+                                        url: '../index/index'
                                     });
                                 },
                                 fail: function () {
@@ -154,7 +154,7 @@ Page({
                                         console.log('- getUserInfo -', _res.userInfo);
                                         wx.setStorageSync('storageLoginedavAtarUrl', _res.userInfo.avatarUrl);
                                         wx.navigateTo({
-                                            url: '../duanzi/duanzi'
+                                            url: '../index/index'
                                         });
                                     },
                                     fail: function () {

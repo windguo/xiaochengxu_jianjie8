@@ -1,16 +1,15 @@
 // latest.js
 var Api = require('../../utils/api.js');
 
-const app = getApp();
-
+var app = getApp();
 Page({
     onShareAppMessage: function (res) {
         if (res.from === 'button') {
             // 来自页面内转发按钮
             console.log('res.target===', res.target);
             return {
-                title: this.data.contentArray[res.target.id].title,
-                imageUrl: this.data.contentArray[res.target.id].titlepic,
+                title: this.data.title,
+                imageUrl: this.data.titlepic,
                 success: (res) => {
                     wx.showToast({
                         content: '分享成功'
@@ -24,8 +23,8 @@ Page({
             }
         } else {
             return {
-                title: '简洁设计网提供设计欣赏、表情、签名、网名、头像等海量个性素材。',
-                imageUrl: '../../indexPic.png',
+                title: '各类爆笑笑话段子每日更新...',
+                path: '/pages/duanzi/duanzi',
                 success: (res) => {
                     wx.showToast({
                         content: '分享成功'
@@ -40,137 +39,135 @@ Page({
         }
     },
     data: {
-        title: '首页',
-        nodes: [],
-        winHeight: 100,
-        hidden: false,
-        interval: 5000,
-        duration: 500,
-        logined: false,
-        username: '',
-        userid: '',
-        token: '',
-        autoplay: true,
-        contentArray:[],
-        contentMeiwenArray:[],
-        contentshuoshuoArray:[],
-        contentwangmingArray:[],
-        contenttouxiangArray:[],
-        contentbiaoqingArray:[],
-        contentqianmingArray:[],
-        contentMeituArray:[]
+        index: null,
+        winHeight: "",//窗口高度
+        currentTab: 0, //预设当前项的值
+        scrollLeft: 0, //tab标题的滚动条位置
+        expertListi: [],
+        expertList: [],
+        username:'',
+        expertListId: [],
+        _windowWidth: wx.getSystemInfoSync().windowWidth,
+        contentArray: []
     },
-    fetchData: function () {
-        var that = this;
-        that.setData({
-            hidden: false
-        })
+    getListData: function (classid, more) {
+        let that = this;
+        let _arr = this.data.contentArray;
         wx.request({
-            url: Api.getAllNode(),
-            success: function (res) {
-                console.log(res);
-                that.setData({
-                    nodes: res.data.result
-                })
-                setTimeout(function () {
+            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/duanzi/?getJson=column&classid=' + classid,
+            method: 'GET',
+            dataType: 'json',
+            success: (json) => {
+                console.log('json.data.result---', json);
+                if (more) {
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            smalltext: json.data.result[index].smalltext.replace(/<[^<>]+>/g, ''),
+                            title: json.data.result[index].title,
+                            username: json.data.result[index].username
+                        });
+                    };
+                    _arr = _arr.concat(_newArr);
                     that.setData({
-                        hidden: true
-                    })
-                }, 300);
+                        contentArray: _arr
+                    });
+                } else {
+                    let _newArr = [];
+                    for (let index = 0; index < json.data.result.length; index++) {
+                        _newArr.push({
+                            classid: json.data.result[index].classid,
+                            id: json.data.result[index].id,
+                            smalltext: json.data.result[index].smalltext.replace(/<[^<>]+>/g, ''),
+                            title: json.data.result[index].title,
+                            username: json.data.result[index].username
+                        });
+                    };
+                    console.log('===', _newArr);
+                    that.setData({
+                        contentArray: _newArr
+                    });
+                };
+                console.log('contentArray--==', this.data.contentArray);
                 wx.hideLoading();
             }
         })
     },
-    onLoad: function (options) {
-        wx.showLoading({});
-				wx.navigateTo({
-					url: '/pages/duanzi/duanzi'
-				})
-        // 扫码进入的判断开始
-      const _scene = options.scene;
-      console.log('_scene_scene', _scene);
-      if (Boolean(_scene) == true) {
-        if (_scene.indexOf('start_') == 0) {
-          let __scene = _scene.substring(6);
-          console.log('__scene', __scene);
-          wx.navigateTo({
-            url: '../' + __scene + '/' + __scene
-          });
-        } else if (_scene.indexOf('classid-') == 0) {
-          let _ar = _scene.split('_');
-          let _classid = _ar[0].split('-');
-          let _id = _ar[1].split('-');
-          let _channel = _id[0];
-          switch (_channel) {
-            case 'duanziid':
-              wx.navigateTo({
-                url: '../duanzi_detail/duanzi_detail?classid=' + _classid[1] + '&id=' + _id[1]
-              });
-              break;
-            default:
-              break;
-          };
-        }
-      };
-        // 扫码进入的判断结束
-        console.log("wx.getStorageSync('storageLogined')", wx.getStorageSync('storageLogined'));
-        this.setData({
-            logined: wx.getStorageSync('storageLogined'),
-            username: wx.getStorageSync('storageLoginedUsernames')
-        })
-        this.fetchData();
-    },
-    login:function(){
-        if (app.globalData.logined){
-            console.log('存在登陆态啊');
-            wx.navigateTo({
-                url: '../my/my'
-            });
-        }else{
-            console.log('不存在登陆态');
-            wx.navigateTo({
-                url: '../login/login'
-            });
-        }
-    },
     // 滚动切换标签样式
     swiperChange: function (e) {
-        console.log('swiperChange==ee.detail.current', e.detail.current);
+        console.log('swiperChange==e', e);
         this.setData({
             currentTab: e.detail.current
         });
-        let _txt = '';
-        if (e.detail.current == 12) {
-            _txt = 'yishuzi';
-        } else {
-            _txt = '艺术字生成';
-        }
-        this.getListData(this.data.expertListId[e.detail.current], _txt);
+        this.getListData(this.data.expertListId[e.detail.current]);
         this.checkCor();
     },
+    // 点击标题切换当前页时改变样式
+    swichNav: function (e) {
+        console.log('eee--click', e);
+        var cur = e.target.dataset.current;
+        if (this.data.currentTaB == cur) { return false; }
+        else {
+            this.setData({
+                currentTab: cur
+            })
+        };
+        this.getListData(this.data.expertListId[cur]);
+    },
+    //判断当前滚动超过一屏时，设置tab标题滚动条。
     checkCor: function () {
+        wx.showLoading({}),
+            this.setData({
+                scrollLeft: 100 * this.data.currentTab - 200
+            });
+    },
+    onLoad: function (options) {
+        console.log('onload000----====---',options);
         this.setData({
-            scrollLeft: this.data._windowWidth / 5 * this.data.currentTab - 100
+            username: app.globalData.username
+        })
+        wx.showLoading({})
+        wx.setNavigationBarTitle({
+            title: '爱爆笑'
+        })
+        let _classid = [];
+        let _expertListi = [];
+        wx.request({
+            url: 'https://www.yishuzi.com.cn/jianjie8_xiaochengxu_api/xiaochengxu/duanzi/?getJson=class',
+            method: 'GET',
+            dataType: 'json',
+            success: (json) => {
+                console.log('json000class===--',json.data.result);
+                for (var i = 0; i < json.data.result.length; i++) {
+                    _expertListi.push(i)
+                    _classid.push(json.data.result[i].classid);
+                };
+                this.setData({
+                    expertList: json.data.result,
+                    expertListi: _expertListi,
+                    expertListId: _classid
+                });
+            }
+        });
+        this.getListData(this.data.currentTab);
+        var that = this;
+        //  高度自适应
+        wx.getSystemInfo({
+            success: function (res) {
+                var clientHeight = res.windowHeight,
+                    clientWidth = res.windowWidth,
+                    rpxR = 750 / clientWidth;
+                var calc = clientHeight * rpxR - 98;
+                that.setData({
+                    winHeight: calc
+                });
+            }
         });
     },
-    changeIndicatorDots: function (e) {
-        this.setData({
-            indicatorDots: !this.data.indicatorDots
-        })
-    },
-    changeAutoplay: function (e) {
-        this.setData({
-            autoplay: !this.data.autoplay
-        })
-    },
-    intervalChange: function (e) {
-        this.setData({
-            interval: e.detail.value
-        })
-    },
-    durationChange: function (e) {
-        this.setData({
-            duration: e.detail.value
-        })
-    },
+    scrolltolowerLoadData: function (e) {
+        console.log('scrolltolowerLoadData', e);
+        this.getListData(this.data.expertListId[this.data.currentTab], true);
+    }
 })

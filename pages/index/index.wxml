@@ -1,50 +1,22 @@
-<!--node.wxml-->
-<view class="container">
-  <view class="memberArea">
-    <view wx:if="{{logined}}" class="flex">
-      <view class="self"><span class="grey">欢迎:</span>{{username}}</view>
-      <navigator class="navigator" url="../my/my" hover-class="navigator-hover">
-        个人中心
-      </navigator>
-    </view>
-    <view bindtap="login" wx:else>
-      <button type="default">点击登录,享受更多福利</button>
-    </view>
+<view class="container bgeee">
+  <view>
+    <scroll-view scroll-with-animation="true" scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+      <view wx:for="{{expertList}}" wx:for-index="idx" wx:for-item="item" class="tab-item {{currentTab==idx?'active':''}}"
+        data-current="{{idx}}" bindtap="swichNav">{{item.classname}}</view>
+    </scroll-view>
   </view>
-  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <swiper-item>
-      <view class="swiper_item" style="background:#FF1493;color:#ffff00;">
-        简洁设计网小程序上线啦
-      </view>
-    </swiper-item>
-    <swiper-item>
-      <view class="swiper_item" style="background:#1E90FF;color:#ffff00;">
-        <navigator target="miniProgram" open-type="navigate" app-id="wx711d9992cb89aa05" path="" extra-data="" version="release">
-          限时免费生成各类艺术字
-        </navigator>
-      </view>
-    </swiper-item>
-    <swiper-item>
-      <view class="swiper_item" style="background:#FF00FF;color:#ffff00;font-size:40rpx;">
-        <navigator target="miniProgram" open-type="navigate" app-id="wxb2e976cef0f6facb" path="" extra-data="" version="release">
-          头像图片精选(各类头像和图片集散地)
-        </navigator>
-      </view>
-    </swiper-item>
-    <swiper-item>
-      <view class="swiper_item" style="background:#6495ED;color:#ffff00;font-size:50rpx;">
-        <navigator target="miniProgram" open-type="navigate" app-id="wxa12f1b4e608253f8" path="" extra-data="" version="release">
-          超十万个个性网名,持续更新中...
-        </navigator>
-      </view>
+  <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="swiperChange" style="height:{{winHeight}}rpx">
+    <swiper-item wx:for="{{expertListi}}" wx:for-index="i" wx:for-item="items">
+      <scroll-view scroll-with-animation="true" scroll-y="true" class="scoll-h" bindscrolltolower="scrolltolowerLoadData">
+        <view class="layout_vertical">
+            <view wx:for="{{contentArray}}" class="listViews" wx:for-index="i" wx:for-item="item" data-text="{{item.title}}">
+              <navigator url="../duanzi_detail/duanzi_detail?classid={{item.classid}}&id={{item.id}}" hover-class="navigator-hover">
+                <h3>{{item.smalltext}}</h3>
+              </navigator>
+              <!-- <p>{{item.username}}</p> -->
+            </view>
+        </view>
+      </scroll-view>
     </swiper-item>
   </swiper>
-  <view class="node-list">
-    <block wx:for="{{nodes}}">
-      <navigator class="node-item" url="../{{item.classpath}}/{{item.classpath}}" hover-class="navigator-hover">
-        {{item.classname}}
-      </navigator>
-    </block>
-  </view>
-  <view style="font-size:32rpx;padding-bottom:40rpx;text-align:center;">客服QQ或微信:275333(备注:小程序)</view>
 </view>

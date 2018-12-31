@@ -1,68 +1,17 @@
-swiper{height:160rpx;}
-.swiper_item{text-align:center;font-size:50rpx;line-height:160rpx;height:160rpx;}
-.navigator-hover{background: #f9f9f9!important;}
-.node-list{
-    display: flex;
-    flex-flow: wrap;
-    margin:60rpx 0 30rpx 35rpx;
-}
-.node-item {
-    width: 38%;
-    font-size:40rpx;
-    background: #eee;
-    border-radius: 20rpx;
-    padding:30rpx;
-    color:#333;
-    text-align: center;
-    margin-right: 25rpx;
-    margin-bottom: 40rpx;
-}
-.node-item:nth-child(2){display:none;}
-.node-item:nth-child(1){background: Turquoise}
-.node-item:nth-child(3){background: LightGreen}
-.node-item:nth-child(4){background: LightPink}
-.node-item:nth-child(5){background: SkyBlue}
-.node-item:nth-child(6){background: LightSteelBlue}
-.node-item:nth-child(7){background: LightSalmon}
-.node-item:nth-child(8){background: Violet}
-.node-item:nth-child(9){background: LightBLue}
-.node-item:nth-child(10){background: LightSalmon}
-.node-item:nth-child(11){background: LightSteelBlue}
-.node-item:nth-child(12){background: Turquoise}
-.node-item:nth-child(13){background: SkyBlue}
-.node-item:nth-child(14){background: LightSalmon}
-.node-item:nth-child(15){background: LightGreen}
-.node-item:nth-child(16){background: Violet}
-.node-item:nth-child(17){background: Turquoise}
-.node-item:nth-child(18){background: LightSteelBlue}
-.node-item:nth-child(19){background: SkyBlue}
-.node-item:nth-child(20){background: Turquoise}
-
-.node-title {
-    padding-left:30px;
-}
-
-.layout_vertical{
-  flex-flow: row wrap;
-  display: flex;
-  flex-direction: row;
-  margin:0 20rpx;
-}
-.grey{color: #999;margin-right: 10rpx;}
-.shows{background: #efefef;padding:0rpx 0 30rpx 0;border-top:30rpx solid #fff;}
-.shows .h2s{text-align: center;display: block;padding:30rpx 0;}
-.shows .listViews{flex:1;margin:9rpx;background:#fff;padding:9rpx;border-radius: 10rpx;}
-.shows .listViews h3{font-size: 32rpx;padding:20rpx;}
-
-.articleList{background: #efefef;border-top:30rpx solid #fff;}
-.articleList .h2s{text-align: center;display: block;padding:30rpx 0 0;}
-.articleList .listViews{margin:30rpx;background:#fff;padding:40rpx;border-radius: 20rpx;}
-.articleList .listViews h3{font-size: 36rpx;display:block;padding-bottom:20rpx;}
-.articleList .listViews p{font-size:30rpx;color: #666;}
-
-.memberArea{padding:30rpx 50rpx;line-height:60rpx;font-size: 36rpx;background: #f9f9f9;background:#efefef;color: #282828}
-.memberArea .flex{display: flex;flex-direction: row;justify-content: space-around;align-items: center;}
-.memberArea .flex .self{flex:1}
-.memberArea .navigator{color: #ff5f50;font-size: 30rpx;}
-
-.footer{font-size:32rpx;padding:30rpx 0;text-align:center;background:#666;color:#f8f8f8}
+.tab-h{
+    height: 100rpx;width: 100%; box-sizing: border-box;overflow: hidden;line-height: 100rpx;background: #ffffff; font-size: 36rpx;font-weight: 300; white-space: nowrap;position: fixed;top: 0; left: 0; z-index: 99999;}
+.tab-item{margin:0 20rpx;display: inline-block;}
+.tab-item.active{color: #ff4f41;position: relative;}
+.item-ans{ width: 100%;display: flex; flex-grow: row no-wrap;justify-content: space-between; padding: 30rpx;box-sizing: border-box; height: 180rpx;align-items: center;border-bottom: 1px solid #F2F2F2;}
+.avatar{width: 100rpx;height: 100rpx;position: relative;padding-right: 30rpx;}
+.avatar .img{width: 100%;height: 100%;}
+.avatar .doyen{width: 40rpx;height: 40rpx;position: absolute;bottom: -2px;right: 20rpx;}
+.expertInfo{font-size: 12px;flex-grow: 2;color: #B0B0B0;line-height: 1.5em;}
+.expertInfo .name{font-size: 16px;color:#000;margin-bottom: 6px;}
+.askBtn{ width: 120rpx;height: 60rpx;line-height: 60rpx;text-align: center;font-size: 14px; border-radius: 60rpx;border: 1px solid #4675F9; color:#4675F9;}
+.tab-content{margin-top: 100rpx;}
+.scoll-h{height: 100%;}
+.shareButton{margin-top:20rpx;width:100%;}
+.listViews{margin:30rpx;background:#fff;padding:40rpx;border-radius: 20rpx;}
+.listViews h3{font-size: 36rpx;display:block;padding-bottom:20rpx;font-weight: 300;line-height: 60rpx;}
+.listViews p{font-size:30rpx;color: #666;}

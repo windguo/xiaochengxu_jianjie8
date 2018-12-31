@@ -7,7 +7,7 @@
         <template is="wxParse" data="{{wxParseData:article.nodes}}" />
       </view>
       <view class="linkTo">
-        <navigator url="../duanzi/duanzi" hover-class="navigator-hover" class="linka">返回首页</navigator>
+        <navigator url="../index/index" hover-class="navigator-hover" class="linka">返回首页</navigator>
         <navigator url="../publish_duanzi/publish_duanzi" hover-class="navigator-hover" class="linkb">发布段子</navigator>
       </view>
       <view class="shareArea">

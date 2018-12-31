@@ -1,35 +1,9 @@
 {
   "pages":[
-		"pages/duanzi/duanzi",
     "pages/index/index",
-    "pages/show/show",
-    "pages/about/about",
-    "pages/show_detail/show_detail",
-    "pages/meiwen/meiwen",
-    "pages/meiwen_detail/meiwen_detail",
-    "pages/meitu/meitu",
-    "pages/meitu_detail/meitu_detail",
-    "pages/shuoshuo/shuoshuo",
-    "pages/shuoshuo_detail/shuoshuo_detail",
-    "pages/touxiang/touxiang",
-    "pages/touxiang_detail/touxiang_detail",
-    "pages/biaoqing/biaoqing",
-    "pages/biaoqing_detail/biaoqing_detail",
-    "pages/wangming/wangming",
-    "pages/wangming_detail/wangming_detail",
-    "pages/qianming/qianming",
-    "pages/qianming_detail/qianming_detail",
+		"pages/login/login",
     "pages/duanzi_detail/duanzi_detail",
-    "pages/raokouling/raokouling",
-    "pages/raokouling_detail/raokouling_detail",
-    "pages/juzi/juzi",
-    "pages/juzi_detail/juzi_detail",
-    "pages/my/my",
-    "pages/login/login",
-    "pages/loginout/loginout",
-    "pages/publish_duanzi/publish_duanzi",
-    "pages/publish_juzi/publish_juzi"
-    
+    "pages/publish_duanzi/publish_duanzi"
   ],
   "window":{
     "backgroundTextStyle":"light",
